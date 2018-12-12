@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Words Store</string>
+    <string name="textWordDesc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci animi at atque error eveniet expedita hic id iste molestias mollitia nam necessitatibus nesciunt numquam officiis perferendis quisquam repellendus, rerum voluptas.</string>
+    <string name="lbl_categories">Categories</string>
+    <string name="lbl_filter_by_category">Filter by category</string>
+
+    <!-- Save Category Dialog-->
+    <string name="hint_category_title">Category Title</string>
+    <string name="hint_category_desc">Category Description</string>
+
+
+
+    <string name="action_delete">Delete</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_save">Save</string>
+    <string name="action_cancel">Cancel</string>
+</resources>
