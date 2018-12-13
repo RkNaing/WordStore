@@ -7,16 +7,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.devshub.rk.wordsstore.R
 import com.devshub.rk.wordsstore.data.model.Category
 import com.devshub.rk.wordsstore.extensions.addSubView
+import com.devshub.rk.wordsstore.utils.CategoryItemClickCallback
 
 /**
  * Created by ZMN on 12/10/18.
  **/
-class CategoryFilterHolder private constructor(view: View) : RecyclerView.ViewHolder(view) {
+class CategoryFilterHolder private constructor(view: View, clickCallback: CategoryItemClickCallback) :
+    RecyclerView.ViewHolder(view) {
 
     companion object {
 
-        fun create(parent: ViewGroup) =
-            CategoryFilterHolder(parent.addSubView(R.layout.item_category_filter))
+        fun create(parent: ViewGroup, clickCallback: CategoryItemClickCallback): CategoryFilterHolder {
+            val view = parent.addSubView(R.layout.item_category_filter)
+            return CategoryFilterHolder(view, clickCallback)
+        }
+
     }
 
     private val tvCategoryTitle: AppCompatTextView by lazy {
