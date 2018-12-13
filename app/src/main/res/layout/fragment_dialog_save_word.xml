@@ -13,14 +13,14 @@
             android:background="@drawable/bg_rounded_dialog">
 
         <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/saveCategoryDialogTvTitle"
+                android:id="@+id/saveWordDialogTvTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/arimo_bold"
-                android:text="@string/lbl_title_create_category"
+                android:text="@string/lbl_title_create_word"
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="22sp"
@@ -29,18 +29,18 @@
                 app:layout_constraintTop_toTopOf="parent"/>
 
         <View
-                android:id="@+id/saveCategoryDialogTitleDivider"
+                android:id="@+id/saveWordDialogTitleDivider"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="8dp"
                 android:background="@color/colorDivider"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/saveCategoryDialogTvTitle"/>
+                app:layout_constraintTop_toBottomOf="@+id/saveWordDialogTvTitle"/>
 
 
         <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/saveCategoryDialogTilTitle"
+                android:id="@+id/saveWordDialogTilTitle"
                 style="@style/AppTextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -52,10 +52,10 @@
                 app:errorEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/saveCategoryDialogTitleDivider">
+                app:layout_constraintTop_toBottomOf="@id/saveWordDialogTitleDivider">
 
             <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/saveCategoryDialogEdtTitle"
+                    android:id="@+id/saveWordDialogEdtTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/arimo"
@@ -65,7 +65,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/saveCategoryDialogTilDesc"
+                android:id="@+id/saveWordDialogTilDesc"
                 style="@style/AppTextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -77,10 +77,10 @@
                 app:errorEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/saveCategoryDialogTilTitle">
+                app:layout_constraintTop_toBottomOf="@id/saveWordDialogTilTitle">
 
             <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/saveCategoryDialogEdtDesc"
+                    android:id="@+id/saveWordDialogEdtDesc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/arimo"
@@ -92,7 +92,30 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-                android:id="@+id/saveCategoryDialogBtnSave"
+                android:id="@+id/saveWordDialogBtnCategoryChooser"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:text="@string/hint_choose_word_category"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp"
+                android:layout_marginTop="16dp"
+                app:icon="@drawable/ic_arrow_up_primary_24dp"
+                app:iconGravity="start"
+                app:strokeColor="@color/colorPrimary"
+                app:cornerRadius="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/saveWordDialogTilDesc"
+                />
+
+        <com.google.android.material.button.MaterialButton
+                android:id="@+id/saveWordDialogBtnSave"
                 style="@style/Widget.MaterialComponents.Button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -105,13 +128,13 @@
                 android:textColor="@android:color/white"
                 android:textSize="14sp"
                 app:cornerRadius="16dp"
-                app:layout_constraintBottom_toBottomOf="@+id/saveCategoryDialogBtnCancel"
+                app:layout_constraintBottom_toBottomOf="@+id/saveWordDialogBtnCancel"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/saveCategoryDialogBtnCancel"
-                app:layout_constraintTop_toTopOf="@+id/saveCategoryDialogBtnCancel"/>
+                app:layout_constraintStart_toEndOf="@+id/saveWordDialogBtnCancel"
+                app:layout_constraintTop_toTopOf="@+id/saveWordDialogBtnCancel"/>
 
         <com.google.android.material.button.MaterialButton
-                android:id="@+id/saveCategoryDialogBtnCancel"
+                android:id="@+id/saveWordDialogBtnCancel"
                 style="@style/Widget.MaterialComponents.Button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -128,9 +151,9 @@
                 app:backgroundTint="@android:color/darker_gray"
                 app:cornerRadius="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/saveCategoryDialogBtnSave"
+                app:layout_constraintEnd_toStartOf="@+id/saveWordDialogBtnSave"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/saveCategoryDialogTilDesc"/>
+                app:layout_constraintTop_toBottomOf="@+id/saveWordDialogBtnCategoryChooser"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

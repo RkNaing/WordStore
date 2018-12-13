@@ -4,16 +4,12 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.transaction
 import com.devshub.rk.wordsstore.R
-import com.devshub.rk.wordsstore.ui.fragments.CategoriesFilterBottomSheetDialogFragment
-import com.devshub.rk.wordsstore.ui.fragments.ManageCategoriesFragment
-import com.devshub.rk.wordsstore.ui.fragments.SaveCategoryDialogFragment
-import com.devshub.rk.wordsstore.ui.fragments.WordsListFragment
+import com.devshub.rk.wordsstore.ui.fragments.*
 import com.google.android.material.bottomappbar.BottomAppBar
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -90,7 +86,8 @@ class MainActivity : AppCompatActivity() {
         replaceFragment(WordsListFragment())
         mainTvScreenTitle.text = getString(R.string.app_name)
         mainAddWordFab.setOnClickListener {
-            Toast.makeText(this, "Add Word", Toast.LENGTH_SHORT).show()
+            val saveWordDialog = SaveWordDialogFragment.createInstance()
+            saveWordDialog.show(supportFragmentManager, saveWordDialog.tag)
         }
     }
 

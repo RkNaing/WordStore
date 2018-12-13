@@ -8,6 +8,12 @@
     <string name="hint_category_title">Category Title</string>
     <string name="hint_category_desc">Category Description</string>
     <string name="validation_enter_category_title">Please provide category title!</string>
+    <string name="lbl_title_create_category">Create Category</string>
+    <string name="lbl_title_update_category">Update Category</string>
+
+    <string name="lbl_title_create_word">Add Word</string>
+    <string name="lbl_title_update_word">Update Word</string>
+    <string name="hint_choose_word_category">Choose word category</string>
 
     <string name="lbl_delete_confirm">Confirm Delete</string>
 

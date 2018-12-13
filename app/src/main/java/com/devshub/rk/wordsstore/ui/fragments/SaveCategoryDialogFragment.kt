@@ -59,6 +59,7 @@ class SaveCategoryDialogFragment : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         category?.let {
+            saveCategoryDialogTvTitle.text = getString(R.string.lbl_title_update_category)
             saveCategoryDialogEdtTitle.setText(it.title)
             saveCategoryDialogEdtDesc.setText(it.description)
         }
