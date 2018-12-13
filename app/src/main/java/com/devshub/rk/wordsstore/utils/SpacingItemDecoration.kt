@@ -93,8 +93,8 @@ class SpacingItemDecoration(
     }
 
     private fun dpToPx(dp: Int): Int {
-        val displayMatric = Resources.getSystem().displayMetrics
-        val px = dp * (displayMatric.densityDpi / 160f)
+        val displayMetric = Resources.getSystem().displayMetrics
+        val px = dp * (displayMetric.densityDpi / 160f)
         return px.toInt()
     }
 

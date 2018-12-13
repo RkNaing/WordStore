@@ -7,11 +7,19 @@
     <!-- Save Category Dialog-->
     <string name="hint_category_title">Category Title</string>
     <string name="hint_category_desc">Category Description</string>
+    <string name="validation_enter_category_title">Please provide category title!</string>
 
-
+    <string name="lbl_delete_confirm">Confirm Delete</string>
 
     <string name="action_delete">Delete</string>
     <string name="action_edit">Edit</string>
     <string name="action_save">Save</string>
     <string name="action_cancel">Cancel</string>
+
+    <string name="msg_info_save_success">Successfully Saved</string>
+    <string name="msg_err_save_failed">Failed to save!</string>
+    <string name="msg_info_delete_success">Successfully Deleted</string>
+    <string name="msg_err_delete_failed">Failed to delete!</string>
+    <string name="msg_confirm_delete_category"><![CDATA[Are you sure to delete category \"<b>%s</b>\"?\nThis action will delete all words those fall under this category and cannot be undone!]]></string>
+
 </resources>
