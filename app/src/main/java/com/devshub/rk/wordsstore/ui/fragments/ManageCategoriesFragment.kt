@@ -5,11 +5,8 @@ import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.devshub.rk.wordsstore.R
-import com.devshub.rk.wordsstore.data.repositories.getCategoryRepository
-import com.devshub.rk.wordsstore.extensions.errorToast
-import com.devshub.rk.wordsstore.extensions.getHtml
-import com.devshub.rk.wordsstore.extensions.showDeleteConfirmDialog
-import com.devshub.rk.wordsstore.extensions.successToast
+import com.devshub.rk.wordsstore.data.repositories.categoryRepository
+import com.devshub.rk.wordsstore.extensions.*
 import com.devshub.rk.wordsstore.ui.adapter.CategoriesRVAdapter
 import com.devshub.rk.wordsstore.ui.viewmodels.MainViewModel
 import com.devshub.rk.wordsstore.utils.SpacingItemDecoration
@@ -41,7 +38,7 @@ class ManageCategoriesFragment : BaseFragment() {
                 getString(R.string.msg_confirm_delete_category, category.title).getHtml()
             activity?.let {
                 it.showDeleteConfirmDialog(deleteConfirmMessage) {
-                    getCategoryRepository().deleteCategory(it, category) { isSuccess ->
+                    categoryRepository.deleteCategory(it, category) { isSuccess ->
                         if (isSuccess) {
                             it.successToast(R.string.msg_info_delete_success)
                         } else {
@@ -66,7 +63,15 @@ class ManageCategoriesFragment : BaseFragment() {
 
         val mainViewModel = ViewModelProviders.of(requireActivity()).get(MainViewModel::class.java)
         mainViewModel.categories.observe(this, Observer { pagedList ->
-            adapter.submitList(pagedList)
+            adapter.submitList(pagedList) {
+                if (adapter.itemCount > 0) {
+                    manageCategoryEmptyViewContainer.gone()
+                    manageCategoriesRV.visible()
+                } else {
+                    manageCategoryEmptyViewContainer.visible()
+                    manageCategoriesRV.gone()
+                }
+            }
         })
     }
 }

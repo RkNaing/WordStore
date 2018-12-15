@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -75,7 +76,11 @@ class MainActivity : AppCompatActivity() {
         }, 100)
 
         navHandler = {
-            val categoriesListBottomSheet = CategoriesFilterBottomSheetDialogFragment()
+            val categoriesListBottomSheet =
+                CategoryChooserBottomSheetDialogFragment.createInstance(getString(R.string.lbl_filter_by_category)) {
+                    Toast.makeText(applicationContext, it.title, Toast.LENGTH_SHORT).show()
+                }
+
             categoriesListBottomSheet.show(
                 supportFragmentManager,
                 categoriesListBottomSheet.tag

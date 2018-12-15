@@ -3,6 +3,7 @@
     <string name="textWordDesc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci animi at atque error eveniet expedita hic id iste molestias mollitia nam necessitatibus nesciunt numquam officiis perferendis quisquam repellendus, rerum voluptas.</string>
     <string name="lbl_categories">Categories</string>
     <string name="lbl_filter_by_category">Filter by category</string>
+    <string name="lbl_choose_category">Choose Category</string>
 
     <!-- Save Category Dialog-->
     <string name="hint_category_title">Category Title</string>
@@ -10,6 +11,7 @@
     <string name="validation_enter_category_title">Please provide category title!</string>
     <string name="lbl_title_create_category">Create Category</string>
     <string name="lbl_title_update_category">Update Category</string>
+    <string name="msg_empty_category">No word categories.\nPlease add some word categories.\nExample : Noun, Verb, Adjective, etc.</string>
 
     <string name="lbl_title_create_word">Add Word</string>
     <string name="lbl_title_update_word">Update Word</string>

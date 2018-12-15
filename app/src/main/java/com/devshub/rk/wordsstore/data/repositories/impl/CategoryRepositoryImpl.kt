@@ -1,6 +1,9 @@
 package com.devshub.rk.wordsstore.data.repositories.impl
 
 import android.content.Context
+import androidx.lifecycle.LiveData
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
 import com.devshub.rk.wordsstore.data.db.AppDB
 import com.devshub.rk.wordsstore.data.db.dao.CategoryDao
 import com.devshub.rk.wordsstore.data.model.Category
@@ -45,6 +48,19 @@ class CategoryRepositoryImpl : CategoryRepository {
         operateInIO(context, { numOfRowsAffected ->
             completion(numOfRowsAffected > 0)
         }, { deleteCategory(category) })
+    }
+
+    override fun categoryPagedList(context: Context): LiveData<PagedList<Category>> {
+        val pagedListConfig = PagedList.Config.Builder()
+            .setEnablePlaceholders(true)
+            .setPrefetchDistance(10)
+            .setPageSize(20)
+            .build()
+
+        return LivePagedListBuilder(
+            AppDB.getInstance(context).getCategoryDao().getAll(),
+            pagedListConfig
+        ).build()
     }
 
     private inline fun <T> operateInIO(

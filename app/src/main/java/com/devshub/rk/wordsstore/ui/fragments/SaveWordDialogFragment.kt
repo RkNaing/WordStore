@@ -68,7 +68,10 @@ class SaveWordDialogFragment : DialogFragment() {
 
         saveWordDialogBtnCategoryChooser.setOnClickListener {
             activity?.let { hostActivity ->
-                val categoriesListBottomSheet = CategoriesFilterBottomSheetDialogFragment()
+                val categoriesListBottomSheet =
+                    CategoryChooserBottomSheetDialogFragment.createInstance(getString(R.string.lbl_choose_category)) { category ->
+                        saveWordDialogBtnCategoryChooser.text = category.title
+                    }
                 categoriesListBottomSheet.show(
                     hostActivity.supportFragmentManager,
                     categoriesListBottomSheet.tag

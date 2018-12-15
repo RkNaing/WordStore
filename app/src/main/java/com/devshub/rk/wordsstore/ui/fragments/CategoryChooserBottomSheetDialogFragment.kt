@@ -8,16 +8,36 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.devshub.rk.wordsstore.R
-import com.devshub.rk.wordsstore.ui.adapter.CategoriesFilterRVAdapter
+import com.devshub.rk.wordsstore.ui.adapter.CategoryChooserRVAdapter
 import com.devshub.rk.wordsstore.ui.viewmodels.MainViewModel
+import com.devshub.rk.wordsstore.utils.CategoryItemClickCallback
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import kotlinx.android.synthetic.main.fragment_categories_filter_bottom_drawer.*
+import kotlinx.android.synthetic.main.fragment_category_chooser_bottom_drawer.*
 
 /**
  * Created by ZMN on 12/10/18.
  **/
-class CategoriesFilterBottomSheetDialogFragment : BottomSheetDialogFragment() {
+class CategoryChooserBottomSheetDialogFragment : BottomSheetDialogFragment() {
+
+
+    companion object {
+
+        private const val ARG_CHOOSER_TITLE = "ArgChooserTitle"
+
+        fun createInstance(
+            chooserTitle: String,
+            chooserCallback: CategoryItemClickCallback
+        ): CategoryChooserBottomSheetDialogFragment {
+            val fragment = CategoryChooserBottomSheetDialogFragment()
+            val args = Bundle().also { it.putString(ARG_CHOOSER_TITLE, chooserTitle) }
+            fragment.arguments = args
+            fragment.chooserCallback = chooserCallback
+            return fragment
+        }
+    }
+
+    lateinit var chooserCallback: CategoryItemClickCallback
 
     override fun getTheme() = R.style.BottomSheetDialogTheme
 
@@ -29,24 +49,27 @@ class CategoriesFilterBottomSheetDialogFragment : BottomSheetDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_categories_filter_bottom_drawer, container, false)
+        return inflater.inflate(R.layout.fragment_category_chooser_bottom_drawer, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        categoriesFiltersRv.addItemDecoration(
+        categoryChooserTitleLbl.text = arguments?.getString(ARG_CHOOSER_TITLE) ?: getString(R.string.lbl_categories)
+
+        categoryChooserRv.addItemDecoration(
             DividerItemDecoration(
                 context,
                 DividerItemDecoration.VERTICAL
             )
         )
 
-        val adapter = CategoriesFilterRVAdapter {
+        val adapter = CategoryChooserRVAdapter {
+            chooserCallback(it)
+            this.dismiss()
         }
 
-        categoriesFiltersRv.setHasFixedSize(true)
-        categoriesFiltersRv.adapter = adapter
+        categoryChooserRv.adapter = adapter
 
         val mainViewModel = ViewModelProviders.of(requireActivity()).get(MainViewModel::class.java)
         mainViewModel.categories.observe(this, Observer {

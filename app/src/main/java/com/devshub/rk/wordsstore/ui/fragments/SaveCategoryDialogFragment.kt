@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.devshub.rk.wordsstore.R
 import com.devshub.rk.wordsstore.data.model.Category
-import com.devshub.rk.wordsstore.data.repositories.getCategoryRepository
+import com.devshub.rk.wordsstore.data.repositories.categoryRepository
 import com.devshub.rk.wordsstore.extensions.*
 import kotlinx.android.synthetic.main.fragment_dialog_save_category.*
 
@@ -102,7 +102,7 @@ class SaveCategoryDialogFragment : DialogFragment() {
                     }
                 }
 
-                with(getCategoryRepository()) {
+                with(categoryRepository) {
 
                     if (categoryToSave.id > 0) {
                         updateCategory(requireContext(), categoryToSave, completionHandler)

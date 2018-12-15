@@ -30,3 +30,11 @@ fun TextInputLayout.clearError() {
     isErrorEnabled = false
     error = null
 }
+
+fun View.gone() {
+    this.visibility = View.GONE
+}
+
+fun View.visible(){
+    this.visibility = View.VISIBLE
+}

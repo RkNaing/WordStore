@@ -9,7 +9,7 @@
     app:layout_behavior="@string/bottom_sheet_behavior">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/categoriesFilterTitleLbl"
+        android:id="@+id/categoryChooserTitleLbl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -20,11 +20,11 @@
         android:textSize="22sp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/categoriesFiltersRv"
+        android:id="@+id/categoryChooserRv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="8dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_category_filter" />
+        tools:listitem="@layout/item_category_chooser" />
 
 </LinearLayout>
