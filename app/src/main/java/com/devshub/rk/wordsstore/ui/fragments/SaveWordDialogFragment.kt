@@ -8,8 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.devshub.rk.wordsstore.R
+import com.devshub.rk.wordsstore.data.model.Category
 import com.devshub.rk.wordsstore.data.model.Word
-import com.devshub.rk.wordsstore.extensions.dismissSoftKeyboard
+import com.devshub.rk.wordsstore.data.repositories.wordRepository
+import com.devshub.rk.wordsstore.extensions.*
+import com.devshub.rk.wordsstore.utils.CompletionCallback
 import kotlinx.android.synthetic.main.fragment_dialog_save_word.*
 
 class SaveWordDialogFragment : DialogFragment() {
@@ -26,6 +29,7 @@ class SaveWordDialogFragment : DialogFragment() {
     }
 
     private var word: Word? = null
+    private var category: Category? = null
     private var isSaveInProgress = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,11 +75,60 @@ class SaveWordDialogFragment : DialogFragment() {
                 val categoriesListBottomSheet =
                     CategoryChooserBottomSheetDialogFragment.createInstance(getString(R.string.lbl_choose_category)) { category ->
                         saveWordDialogBtnCategoryChooser.text = category.title
+                        this.category = category
                     }
                 categoriesListBottomSheet.show(
                     hostActivity.supportFragmentManager,
                     categoriesListBottomSheet.tag
                 )
+            }
+        }
+
+        saveWordDialogBtnSave.setOnClickListener {
+
+            if (isSaveInProgress) return@setOnClickListener
+
+            activity?.dismissSoftKeyboard()
+
+            val enteredTitle = saveWordDialogEdtTitle.trimmedText
+            val enteredDesc = saveWordDialogEdtDesc.trimmedText
+
+            if (enteredTitle.isEmpty()) {
+                saveWordDialogTilTitle.showError(R.string.validation_enter_word_title)
+            } else if (enteredDesc.isEmpty()) {
+                saveWordDialogTilTitle.clearError()
+                saveWordDialogTilDesc.showError(R.string.validation_enter_word_desc)
+            } else {
+                saveWordDialogTilTitle.clearError()
+                saveWordDialogTilDesc.clearError()
+                val chosenCategory = category
+                if (chosenCategory == null) {
+                    context?.errorToast(R.string.validation_choose_word_category)
+                } else {
+                    val wordToSave =
+                        word?.copy(title = enteredTitle, description = enteredDesc, categoryId = chosenCategory.id)
+                            ?: Word(title = enteredTitle, description = enteredDesc, categoryId = chosenCategory.id)
+                    isSaveInProgress = true
+
+                    val completionHandler: CompletionCallback = { isSuccess ->
+                        isSaveInProgress = false
+
+                        if (isSuccess) {
+                            requireContext().successToast(R.string.msg_info_save_success)
+                            dismiss()
+                        } else {
+                            requireContext().errorToast(R.string.msg_err_save_failed)
+                        }
+                    }
+
+                    with(wordRepository) {
+                        if (wordToSave.id > 0) {
+                            updateWord(requireContext(), wordToSave, completionHandler)
+                        } else {
+                            addWord(requireContext(), wordToSave, completionHandler)
+                        }
+                    }
+                }
             }
         }
     }

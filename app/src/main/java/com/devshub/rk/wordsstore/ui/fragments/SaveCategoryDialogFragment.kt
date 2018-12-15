@@ -11,6 +11,7 @@ import com.devshub.rk.wordsstore.R
 import com.devshub.rk.wordsstore.data.model.Category
 import com.devshub.rk.wordsstore.data.repositories.categoryRepository
 import com.devshub.rk.wordsstore.extensions.*
+import com.devshub.rk.wordsstore.utils.CompletionCallback
 import kotlinx.android.synthetic.main.fragment_dialog_save_category.*
 
 /**
@@ -91,7 +92,7 @@ class SaveCategoryDialogFragment : DialogFragment() {
 
                 isSaveInProgress = true
 
-                val completionHandler: (Boolean) -> Unit = { isSuccess ->
+                val completionHandler: CompletionCallback = { isSuccess ->
                     isSaveInProgress = false
 
                     if (isSuccess) {

@@ -18,6 +18,11 @@
     <string name="hint_choose_word_category">Choose word category</string>
 
     <string name="lbl_delete_confirm">Confirm Delete</string>
+    <string name="hint_word_title">Word Title</string>
+    <string name="hint_word_desc">Word Description</string>
+    <string name="validation_enter_word_title">Please provide word title!</string>
+    <string name="validation_enter_word_desc">Please provide word description!</string>
+    <string name="validation_choose_word_category">Please choose word category!</string>
 
     <string name="action_delete">Delete</string>
     <string name="action_edit">Edit</string>

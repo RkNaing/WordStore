@@ -9,7 +9,7 @@ import kotlinx.android.parcel.Parcelize
 /**
  * Created by ZMN on 12/10/18.
  **/
-@Entity(tableName = "Category_TBL")
+@Entity(tableName = "CATEGORY_TBL")
 @Parcelize
 data class Category(
 
