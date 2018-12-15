@@ -1,23 +1,24 @@
 package com.devshub.rk.wordsstore.ui.adapter
 
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
-import com.devshub.rk.wordsstore.data.model.Word
+import androidx.paging.PagedListAdapter
+import com.devshub.rk.wordsstore.data.model.WordWithCategory
 import com.devshub.rk.wordsstore.ui.viewholders.WordHolder
+import com.devshub.rk.wordsstore.utils.WordWithCategoryItemClickCallback
 
 /**
  * Created by ZMN on 12/7/18.
  **/
-class WordsRVAdapter(var words: MutableList<Word> = mutableListOf()) :
-    RecyclerView.Adapter<WordHolder>() {
+class WordsRVAdapter(private val clickCallback: WordWithCategoryItemClickCallback) :
+    PagedListAdapter<WordWithCategory, WordHolder>(WordWithCategory.diffUtilCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordHolder {
-        return WordHolder.create(parent)
+        return WordHolder.create(parent, clickCallback)
     }
 
-    override fun getItemCount() = words.size
-
     override fun onBindViewHolder(holder: WordHolder, position: Int) {
-        holder.bindWord(words[position])
+        getItem(position)?.let {
+            holder.bindWord(it)
+        }
     }
 }

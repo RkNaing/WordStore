@@ -1,6 +1,7 @@
 package com.devshub.rk.wordsstore.utils
 
 import com.devshub.rk.wordsstore.data.model.Category
+import com.devshub.rk.wordsstore.data.model.WordWithCategory
 
 /**
  * Created by ZMN on 12/13/18.
@@ -9,3 +10,5 @@ import com.devshub.rk.wordsstore.data.model.Category
 typealias CompletionCallback = (Boolean) -> Unit
 
 typealias CategoryItemClickCallback = (Category) -> Unit
+
+typealias WordWithCategoryItemClickCallback = (WordWithCategory) -> Unit

@@ -17,6 +17,6 @@ interface WordDao {
     @Delete
     fun deleteWord(word: Word): Int
 
-    @Query("SELECT WORD_TBL.*, CATEGORY_TBL.title AS category_title FROM WORD_TBL INNER JOIN CATEGORY_TBL ON WORD_TBL.categoryId = CATEGORY_TBL.id")
+    @Query("SELECT WORD_TBL.*, CATEGORY_TBL.id AS word_category_id, CATEGORY_TBL.title AS word_category_title, CATEGORY_TBL.description AS word_category_description FROM WORD_TBL INNER JOIN CATEGORY_TBL ON WORD_TBL.categoryId = CATEGORY_TBL.id")
     fun getAllWithCategoryTitle():DataSource.Factory<Int, WordWithCategory>
 }
