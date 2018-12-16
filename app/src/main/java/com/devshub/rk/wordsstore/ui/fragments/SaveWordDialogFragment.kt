@@ -10,6 +10,7 @@ import androidx.fragment.app.DialogFragment
 import com.devshub.rk.wordsstore.R
 import com.devshub.rk.wordsstore.data.model.Category
 import com.devshub.rk.wordsstore.data.model.Word
+import com.devshub.rk.wordsstore.data.model.WordWithCategory
 import com.devshub.rk.wordsstore.data.repositories.wordRepository
 import com.devshub.rk.wordsstore.extensions.*
 import com.devshub.rk.wordsstore.utils.CompletionCallback
@@ -20,7 +21,7 @@ class SaveWordDialogFragment : DialogFragment() {
     companion object {
         private const val ARG_WORD = "ArgWord"
 
-        fun createInstance(word: Word? = null): SaveWordDialogFragment {
+        fun createInstance(word: WordWithCategory? = null): SaveWordDialogFragment {
             val fragment = SaveWordDialogFragment()
             val args = Bundle().also { it.putParcelable(ARG_WORD, word) }
             fragment.arguments = args
@@ -36,7 +37,11 @@ class SaveWordDialogFragment : DialogFragment() {
         super.onCreate(savedInstanceState)
         setStyle(DialogFragment.STYLE_NO_TITLE, theme)
         isCancelable = false
-        word = arguments?.getParcelable(ARG_WORD)
+        val wordWithCategory: WordWithCategory? = arguments?.getParcelable(ARG_WORD)
+        wordWithCategory?.let {
+            this.word = it.word
+            this.category = it.wordCategory
+        }
     }
 
     override fun onResume() {

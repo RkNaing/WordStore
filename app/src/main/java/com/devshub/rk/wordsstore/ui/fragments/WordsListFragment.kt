@@ -24,7 +24,8 @@ class WordsListFragment : BaseFragment() {
     override fun onViewReady(view: View, savedInstanceState: Bundle?) {
 
         val adapter = WordsRVAdapter { wordWithCategory ->
-
+            val saveWordDialogFragment = SaveWordDialogFragment.createInstance(wordWithCategory)
+            saveWordDialogFragment.show(activity?.supportFragmentManager, saveWordDialogFragment.tag)
         }
 
         wordsFragmentRvWords.adapter = adapter
