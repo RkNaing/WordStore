@@ -2,23 +2,38 @@ package com.devshub.rk.wordsstore.ui.activities
 
 import android.os.Bundle
 import android.os.Handler
+import android.util.DisplayMetrics
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.transaction
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.devshub.rk.wordsstore.R
 import com.devshub.rk.wordsstore.ui.fragments.*
+import com.devshub.rk.wordsstore.ui.viewmodels.MainViewModel
 import com.google.android.material.bottomappbar.BottomAppBar
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    companion object {
+        var screenHeight: Int = 0
+    }
+
     private lateinit var navHandler: () -> Unit
 
     private lateinit var currentFragmentTag: String
+
+    private val wordsListFragment = WordsListFragment()
+
+    private val manageCategoriesFragment = ManageCategoriesFragment()
+
+    private var totalCategoriesCount: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,16 +41,36 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(mainBottomAppBar)
 
+        val displayMetrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(displayMetrics)
+        screenHeight = displayMetrics.heightPixels
+
+        val mainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        mainViewModel.categoriesCount.observe(this, Observer { categoriesCount ->
+            categoriesCount?.let {
+                val shouldPerformUpdate = !(totalCategoriesCount > 0 && it > 0)
+                totalCategoriesCount = it
+
+                if (shouldPerformUpdate) {
+                    if (currentFragmentTag == WordsListFragment.TAG && it < 1) {
+                        showManageCategoriesFragment()
+                    } else {
+                        updateNavIcon()
+                        invalidateOptionsMenu()
+                    }
+                }
+            }
+        })
+
         showWordsListFragment()
 
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
-        if (currentFragmentTag == ManageCategoriesFragment.TAG) {
-            val categoriesItem = menu!!.findItem(R.id.main_categories)
-            categoriesItem.isVisible = false
-        }
+        val categoriesItem = menu!!.findItem(R.id.main_categories)
+        val isCategoriesEmpty = totalCategoriesCount < 1
+        categoriesItem.isVisible = currentFragmentTag != ManageCategoriesFragment.TAG && !isCategoriesEmpty
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -54,6 +89,14 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    override fun onBackPressed() {
+        if (currentFragmentTag == ManageCategoriesFragment.TAG && totalCategoriesCount > 0) {
+            showWordsListFragment()
+        } else {
+            finish()
+        }
+    }
+
     private fun replaceFragment(fragment: Fragment) {
         Handler().post {
             supportFragmentManager.transaction(allowStateLoss = true) {
@@ -62,16 +105,17 @@ class MainActivity : AppCompatActivity() {
                     android.R.anim.slide_out_right
                 )
                 replace(R.id.mainFragmentContainer, fragment, currentFragmentTag)
+                addToBackStack(null)
             }
         }
     }
 
     private fun showWordsListFragment() {
+        currentFragmentTag = WordsListFragment.TAG
+
         Handler().postDelayed({
             runOnUiThread {
-                mainBottomAppBar.navigationIcon =
-                        ContextCompat.getDrawable(this, R.drawable.ic_filter_list_white_24dp)
-                mainBottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
+                updateNavIcon()
             }
         }, 100)
 
@@ -86,9 +130,9 @@ class MainActivity : AppCompatActivity() {
                 categoriesListBottomSheet.tag
             )
         }
-        currentFragmentTag = WordsListFragment.TAG
+
         invalidateOptionsMenu()
-        replaceFragment(WordsListFragment())
+        replaceFragment(wordsListFragment)
         mainTvScreenTitle.text = getString(R.string.app_name)
         mainAddWordFab.setOnClickListener {
             val saveWordDialog = SaveWordDialogFragment.createInstance()
@@ -97,25 +141,43 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showManageCategoriesFragment() {
+        currentFragmentTag = ManageCategoriesFragment.TAG
+
         Handler().postDelayed({
             runOnUiThread {
-                mainBottomAppBar.navigationIcon =
-                        ContextCompat.getDrawable(this, R.drawable.ic_arrow_back_white_24dp)
-                mainBottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
+                updateNavIcon()
             }
         }, 100)
 
         navHandler = {
             showWordsListFragment()
         }
-        currentFragmentTag = ManageCategoriesFragment.TAG
+
         invalidateOptionsMenu()
-        replaceFragment(ManageCategoriesFragment())
+        replaceFragment(manageCategoriesFragment)
         mainTvScreenTitle.text = getString(R.string.lbl_categories)
         mainAddWordFab.setOnClickListener {
             val saveCategoryDialog = SaveCategoryDialogFragment.createInstance()
             saveCategoryDialog.show(supportFragmentManager, saveCategoryDialog.tag)
         }
+    }
+
+    private fun updateNavIcon() {
+
+        val isShowingWordsList = currentFragmentTag == WordsListFragment.TAG
+
+        mainBottomAppBar.navigationIcon = if (totalCategoriesCount < 1) {
+            null
+        } else {
+            @DrawableRes val navigationIconRes: Int =
+                if (isShowingWordsList) R.drawable.ic_filter_list_white_24dp else R.drawable.ic_arrow_back_white_24dp
+
+            ContextCompat.getDrawable(this, navigationIconRes)
+        }
+
+        mainBottomAppBar.fabAlignmentMode =
+                if (isShowingWordsList) BottomAppBar.FAB_ALIGNMENT_MODE_CENTER else BottomAppBar.FAB_ALIGNMENT_MODE_END
+
     }
 
 }

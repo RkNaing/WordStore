@@ -12,6 +12,7 @@
     <string name="lbl_title_create_category">Create Category</string>
     <string name="lbl_title_update_category">Update Category</string>
     <string name="msg_empty_category">No word categories.\nPlease add some word categories.\nExample : Noun, Verb, Adjective, etc.</string>
+    <string name="msg_empty_words">No words added yet.\nPlease add some words.</string>
 
     <string name="lbl_title_create_word">Add Word</string>
     <string name="lbl_title_update_word">Update Word</string>

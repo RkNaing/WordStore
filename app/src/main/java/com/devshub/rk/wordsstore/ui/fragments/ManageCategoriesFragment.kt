@@ -55,9 +55,7 @@ class ManageCategoriesFragment : BaseFragment() {
                 itemSpacingTop = 5,
                 itemSpacingLeft = 10,
                 itemSpacingBottom = 5,
-                itemSpacingRight = 10,
-                topMostSpacing = 10,
-                bottomMostSpacing = 90
+                itemSpacingRight = 10
             )
         )
 

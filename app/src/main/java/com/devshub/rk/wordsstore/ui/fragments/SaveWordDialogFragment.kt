@@ -70,6 +70,10 @@ class SaveWordDialogFragment : DialogFragment() {
             saveWordDialogEdtDesc.setText(it.description)
         }
 
+        category?.let {
+            saveWordDialogBtnCategoryChooser.text = it.title
+        }
+
         saveWordDialogBtnCancel.setOnClickListener {
             activity?.dismissSoftKeyboard()
             dismiss()

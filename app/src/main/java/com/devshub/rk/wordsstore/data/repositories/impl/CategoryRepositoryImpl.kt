@@ -63,6 +63,10 @@ class CategoryRepositoryImpl : CategoryRepository {
         ).build()
     }
 
+    override fun categoriesCount(context: Context): LiveData<Int> {
+        return AppDB.getInstance(context).getCategoryDao().categoriesCount()
+    }
+
     private inline fun <T> operateInIO(
         context: Context,
         crossinline resultHandler: (T) -> Unit,

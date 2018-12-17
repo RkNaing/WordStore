@@ -5,6 +5,8 @@ import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.devshub.rk.wordsstore.R
+import com.devshub.rk.wordsstore.extensions.gone
+import com.devshub.rk.wordsstore.extensions.visible
 import com.devshub.rk.wordsstore.ui.adapter.WordsRVAdapter
 import com.devshub.rk.wordsstore.ui.viewmodels.MainViewModel
 import com.devshub.rk.wordsstore.utils.SpacingItemDecoration
@@ -34,15 +36,21 @@ class WordsListFragment : BaseFragment() {
                 itemSpacingTop = 5,
                 itemSpacingLeft = 10,
                 itemSpacingBottom = 5,
-                itemSpacingRight = 10,
-                topMostSpacing = 10,
-                bottomMostSpacing = 90
+                itemSpacingRight = 10
             )
         )
 
         val mainViewModel = ViewModelProviders.of(requireActivity()).get(MainViewModel::class.java)
         mainViewModel.words.observe(this, Observer { it ->
-            adapter.submitList(it)
+            adapter.submitList(it) {
+                if (adapter.itemCount > 0) {
+                    wordsFragmentEmptyViewContainer.gone()
+                    wordsFragmentRvWords.visible()
+                } else {
+                    wordsFragmentEmptyViewContainer.visible()
+                    wordsFragmentRvWords.gone()
+                }
+            }
         })
     }
 

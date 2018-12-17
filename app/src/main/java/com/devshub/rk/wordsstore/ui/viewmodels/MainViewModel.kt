@@ -18,6 +18,10 @@ class MainViewModel : ViewModel() {
         categoryRepository.categoryPagedList(App.instance.applicationContext)
     }
 
+    val categoriesCount: LiveData<Int> by lazy {
+        categoryRepository.categoriesCount(App.instance.applicationContext)
+    }
+
     val words: LiveData<PagedList<WordWithCategory>> by lazy {
         wordRepository.getAllWordsWithCategoryTitlePagedList(App.instance.applicationContext)
     }

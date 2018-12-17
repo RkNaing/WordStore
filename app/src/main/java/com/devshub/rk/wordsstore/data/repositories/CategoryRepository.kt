@@ -18,4 +18,6 @@ interface CategoryRepository {
     fun deleteCategory(context: Context, category: Category, completion: CompletionCallback)
 
     fun categoryPagedList(context: Context): LiveData<PagedList<Category>>
+
+    fun categoriesCount(context: Context): LiveData<Int>
 }

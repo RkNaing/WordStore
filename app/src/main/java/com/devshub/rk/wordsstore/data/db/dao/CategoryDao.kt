@@ -1,5 +1,6 @@
 package com.devshub.rk.wordsstore.data.db.dao
 
+import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
 import androidx.room.*
 import com.devshub.rk.wordsstore.data.model.Category
@@ -21,4 +22,7 @@ interface CategoryDao {
 
     @Delete
     fun deleteCategory(category: Category): Int
+
+    @Query("SELECT COUNT(*) FROM CATEGORY_TBL")
+    fun categoriesCount(): LiveData<Int>
 }

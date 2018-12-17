@@ -16,9 +16,6 @@ import androidx.recyclerview.widget.RecyclerView
  *  @param itemSpacingLeft Space in "DP" on RecyclerView Item Left
  *  @param itemSpacingBottom Space in "DP" on RecyclerView Item Bottom
  *  @param itemSpacingRight Space in "DP" on RecyclerView Item Right
- *  @param topMostSpacing Space in "DP" on RecyclerView very first Item Top (Default value is equal to itemSpacingTop)
- *  @param bottomMostSpacing Space in "DP" on RecyclerView last Item Bottom.
- *  Can provide SpacingItemDecoration.NEAREST_ITEM_VIEW_HEIGHT to set the spacing to double height of second last RecyclerView
  *
  */
 class SpacingItemDecoration(
@@ -29,11 +26,7 @@ class SpacingItemDecoration(
 
     itemSpacingBottom: Int = 0,
 
-    itemSpacingRight: Int = 0,
-
-    topMostSpacing: Int = itemSpacingTop,
-
-    bottomMostSpacing: Int = itemSpacingBottom
+    itemSpacingRight: Int = 0
 
 ) : RecyclerView.ItemDecoration() {
 
@@ -42,19 +35,8 @@ class SpacingItemDecoration(
     private val itemSpacingBottomPx = dpToPx(itemSpacingBottom)
     private val itemSpacingRightPx = dpToPx(itemSpacingRight)
 
-    private val topMostSpacingPx =
-        if (topMostSpacing == SpacingItemDecoration.NEAREST_ITEM_VIEW_HEIGHT) topMostSpacing else dpToPx(
-            topMostSpacing
-        )
 
-    private val bottomMostSpacingPx =
-        if (bottomMostSpacing == SpacingItemDecoration.NEAREST_ITEM_VIEW_HEIGHT) bottomMostSpacing else dpToPx(
-            bottomMostSpacing
-        )
-
-    companion object {
-        const val NEAREST_ITEM_VIEW_HEIGHT = -245
-    }
+    constructor(itemSpacing: Int) : this(itemSpacing, itemSpacing, itemSpacing, itemSpacing)
 
     override fun getItemOffsets(
         outRect: Rect,
@@ -64,31 +46,7 @@ class SpacingItemDecoration(
     ) {
         super.getItemOffsets(outRect, view, parent, state)
 
-        val dataSize = state.itemCount
-        val currentPosition = parent.getChildAdapterPosition(view)
-
-        var topSpacing = itemSpacingTopPx
-        var bottomSpacing = itemSpacingBottomPx
-
-        if (currentPosition == (dataSize - 1)) {
-
-            bottomSpacing = if (bottomMostSpacingPx == NEAREST_ITEM_VIEW_HEIGHT) {
-                view.height
-            } else {
-                bottomMostSpacingPx
-            }
-
-        } else if (currentPosition == 0) {
-
-            topSpacing = if (topMostSpacingPx == NEAREST_ITEM_VIEW_HEIGHT) {
-                view.height
-            } else {
-                topMostSpacingPx
-            }
-
-        }
-
-        outRect.set(itemSpacingLeftPx, topSpacing, itemSpacingRightPx, bottomSpacing)
+        outRect.set(itemSpacingLeftPx, itemSpacingTopPx, itemSpacingRightPx, itemSpacingBottomPx)
 
     }
 

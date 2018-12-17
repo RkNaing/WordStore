@@ -1,6 +1,7 @@
 package com.devshub.rk.wordsstore.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,12 +18,17 @@ abstract class BaseFragment : Fragment() {
 
     protected abstract fun onViewReady(view: View, savedInstanceState: Bundle?)
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        Log.d("BaseFragment", "onCreate: Create ${this::class.java.simpleName}")
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(getLayoutId(), container, false)
+        return view ?: inflater.inflate(getLayoutId(), container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

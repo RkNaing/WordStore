@@ -14,6 +14,8 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             tools:listitem="@layout/item_category"
             tools:visibility="gone"
+            android:clipToPadding="false"
+            android:paddingBottom="90dp"
             />
 
     <LinearLayout
