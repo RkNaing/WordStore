@@ -10,12 +10,11 @@ import com.devshub.rk.wordsstore.utils.CategoryItemClickCallback
  * Created by ZMN on 12/11/18.
  **/
 class CategoriesRVAdapter(
-    private val editCallback: CategoryItemClickCallback,
-    private val deleteCallback: CategoryItemClickCallback
+    private val categoryClickCallback: CategoryItemClickCallback
 ) : PagedListAdapter<Category, CategoryHolder>(Category.diffUtilCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryHolder {
-        return CategoryHolder.create(parent, editCallback, deleteCallback)
+        return CategoryHolder.create(parent, categoryClickCallback)
     }
 
     override fun onBindViewHolder(holder: CategoryHolder, position: Int) {

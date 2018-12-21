@@ -1,6 +1,8 @@
 package com.devshub.rk.wordsstore.ui.viewmodels
 
+import android.view.View
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.PagedList
 import com.devshub.rk.wordsstore.app.App
@@ -25,5 +27,13 @@ class MainViewModel : ViewModel() {
     val words: LiveData<PagedList<WordWithCategory>> by lazy {
         wordRepository.getAllWordsWithCategoryTitlePagedList(App.instance.applicationContext)
     }
+
+    val screenTitle: MutableLiveData<Int> = MutableLiveData()
+
+    val fabIcon: MutableLiveData<Int> = MutableLiveData()
+
+    val fabClickListener: MutableLiveData<View.OnClickListener> = MutableLiveData()
+
+    val fabVibility: MutableLiveData<Boolean> = MutableLiveData()
 
 }

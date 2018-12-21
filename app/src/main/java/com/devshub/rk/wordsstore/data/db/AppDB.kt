@@ -4,10 +4,13 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.devshub.rk.wordsstore.data.db.dao.CategoryDao
 import com.devshub.rk.wordsstore.data.db.dao.WordDao
 import com.devshub.rk.wordsstore.data.model.Category
 import com.devshub.rk.wordsstore.data.model.Word
+import com.devshub.rk.wordsstore.data.repositories.categoryRepository
+import com.devshub.rk.wordsstore.extensions.logd
 import com.devshub.rk.wordsstore.utils.SingletonHolder
 
 /**
@@ -25,7 +28,17 @@ abstract class AppDB : RoomDatabase() {
             context.applicationContext,
             AppDB::class.java,
             "WordStore.db"
-        ).build()
+        ).addCallback(object : RoomDatabase.Callback() {
+
+            override fun onCreate(db: SupportSQLiteDatabase) {
+                super.onCreate(db)
+                logd("Populating Stocked Categories")
+                categoryRepository.createCategories(context, Category.getStockedCategories()) { success ->
+                    logd("Finished populating stocked categories. Is Success $success")
+                }
+            }
+
+        }).build()
     })
 
     abstract fun getCategoryDao(): CategoryDao

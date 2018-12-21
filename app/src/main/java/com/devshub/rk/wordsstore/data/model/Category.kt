@@ -30,6 +30,43 @@ data class Category(
                     oldItem == newItem
 
             }
+
+        fun getStockedCategories(): List<Category> {
+            return mutableListOf<Category>().also {
+                it.add(
+                    Category(
+                        title = "Clause",
+                        description = "A group of words with a verb and a subject."
+                    )
+                )
+                it.add(
+                    Category(
+                        title = "Idiom",
+                        description = "An expression whose meaning is not predictable from the usual meanings of its constituent elements.A language, dialect, or style of speaking peculiar to a people."
+                    )
+                )
+                it.add(
+                    Category(
+                        title = "Phrase",
+                        description = "Any group of words that does not contain a subject completing an action."
+                    )
+                )
+                it.add(Category(title = "Newly Learned Vocab", description = "Newly learned words."))
+                it.add(
+                    Category(
+                        title = "Slang",
+                        description = "Very informal language that is usually spoken rather than written, used especially by particular groups of people."
+                    )
+                )
+                it.add(
+                    Category(
+                        title = "Stylish Vocab",
+                        description = "Words to describe common things in a special manner."
+                    )
+                )
+
+            }
+        }
     }
 
 }

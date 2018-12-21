@@ -13,6 +13,8 @@ interface CategoryRepository {
 
     fun createCategory(context: Context, category: Category, completion: CompletionCallback)
 
+    fun createCategories(context: Context, categories: List<Category>, completion: CompletionCallback)
+
     fun updateCategory(context: Context, category: Category, completion: CompletionCallback)
 
     fun deleteCategory(context: Context, category: Category, completion: CompletionCallback)

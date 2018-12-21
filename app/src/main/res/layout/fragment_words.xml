@@ -12,14 +12,15 @@
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:visibility="gone"
+            android:paddingTop="5dp"
             android:clipToPadding="false"
             android:paddingBottom="90dp"
             tools:listitem="@layout/item_word"/>
 
     <LinearLayout
             android:id="@+id/wordsFragmentEmptyViewContainer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_gravity="center"
             android:padding="5dp"

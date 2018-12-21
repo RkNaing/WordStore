@@ -15,21 +15,18 @@ import kotlinx.android.synthetic.main.item_category.*
  **/
 class CategoryHolder private constructor(
     override val containerView: View,
-    private val editCallback: CategoryItemClickCallback,
-    private val deleteCallback: CategoryItemClickCallback
+    private val categoryClickCallback: CategoryItemClickCallback
 ) :
     RecyclerView.ViewHolder(containerView), LayoutContainer {
 
     companion object {
         fun create(
-            parent: ViewGroup, editCallback: CategoryItemClickCallback,
-            deleteCallback: CategoryItemClickCallback
+            parent: ViewGroup, editCallback: CategoryItemClickCallback
         ): CategoryHolder {
             val view = parent.addSubView(R.layout.item_category)
             return CategoryHolder(
                 view,
-                editCallback = editCallback,
-                deleteCallback = deleteCallback
+                categoryClickCallback = editCallback
             )
         }
     }
@@ -37,11 +34,8 @@ class CategoryHolder private constructor(
     fun bindCategory(category: Category) {
         itemCategoryTvTitle.text = category.title
         itemCategoryTvDesc.text = category.description
-        itemCategoryControlEdit.setOnClickListener {
-            editCallback(category)
-        }
-        itemCategoryControlDelete.setOnClickListener {
-            deleteCallback(category)
+        itemView.setOnClickListener {
+            categoryClickCallback(category)
         }
     }
 

@@ -14,6 +14,9 @@ interface CategoryDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun createCategory(category: Category): Long
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun createCategories(categories: List<Category>): List<Long>
+
     @Query("SELECT * FROM CATEGORY_TBL")
     fun getAll(): DataSource.Factory<Int, Category>
 

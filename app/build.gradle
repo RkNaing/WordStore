@@ -6,6 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+apply plugin: "androidx.navigation.safeargs"
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -41,7 +43,7 @@ dependencies {
     // UI Dependencies
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
-    implementation 'com.google.android.material:material:1.1.0-alpha01'
+    implementation 'com.google.android.material:material:1.1.0-alpha02'
 
     // Toasty
     implementation 'com.github.GrenderG:Toasty:1.3.1'
@@ -56,6 +58,7 @@ dependencies {
     // Room Persistent
     def room_version = "2.1.0-alpha03"
     implementation "androidx.room:room-runtime:$room_version"
+
     // Coroutines support for Room
     implementation "androidx.room:room-coroutines:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
@@ -64,12 +67,16 @@ dependencies {
     def paging_version = "2.1.0-rc01"
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
 
+    // Navigation Component
+    implementation "android.arch.navigation:navigation-fragment-ktx:$nav_component_version"
+    implementation "android.arch.navigation:navigation-ui-ktx:$nav_component_version"
+
     // Debug DB
     debugImplementation 'com.amitshekhar.android:debug-db:1.0.4'
 
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.1-beta01'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1-beta01'
+    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
 }
 
 androidExtensions {
