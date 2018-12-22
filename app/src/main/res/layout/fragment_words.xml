@@ -1,47 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/wordsFragmentSwipeRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/wordsFragmentRvWords"
+    <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:visibility="gone"
-            android:paddingTop="5dp"
-            android:clipToPadding="false"
-            android:paddingBottom="90dp"
-            tools:listitem="@layout/item_word"/>
+            android:layout_height="match_parent">
 
-    <LinearLayout
-            android:id="@+id/wordsFragmentEmptyViewContainer"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_gravity="center"
-            android:padding="5dp"
-            android:gravity="center"
-            android:visibility="gone"
-            tools:visibility="visible">
-
-        <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:src="@drawable/img_empty"/>
-
-        <androidx.appcompat.widget.AppCompatTextView
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/wordsFragmentRvWords"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorTextSecondary"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:visibility="gone"
+                android:paddingTop="5dp"
+                android:clipToPadding="false"
+                android:paddingBottom="90dp"
+                tools:listitem="@layout/item_word"/>
+
+        <LinearLayout
+                android:id="@+id/wordsFragmentEmptyViewContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:padding="5dp"
                 android:gravity="center"
-                android:text="@string/msg_empty_words"
-                android:fontFamily="@font/arimo"
-                />
+                android:visibility="gone"
+                tools:visibility="visible">
 
-    </LinearLayout>
+            <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:src="@drawable/img_empty"/>
 
-</FrameLayout>
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorTextSecondary"
+                    android:gravity="center"
+                    android:text="@string/msg_empty_words"
+                    android:fontFamily="@font/arimo"
+                    />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+

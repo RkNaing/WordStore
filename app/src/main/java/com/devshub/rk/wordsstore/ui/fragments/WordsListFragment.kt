@@ -5,7 +5,6 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
@@ -22,9 +21,16 @@ import kotlinx.android.synthetic.main.fragment_words.*
  **/
 class WordsListFragment : BaseFragment() {
 
+    private val mainViewModel by lazy { ViewModelProviders.of(requireActivity()).get(MainViewModel::class.java) }
+
     override fun getLayoutId() = R.layout.fragment_words
 
     override fun onViewReady(view: View, savedInstanceState: Bundle?) {
+
+        wordsFragmentSwipeRefreshLayout.setOnRefreshListener {
+            wordsFragmentSwipeRefreshLayout.isRefreshing = false
+            mainViewModel.getAllWords()
+        }
 
         val adapter = WordsRVAdapter { wordWithCategory ->
             findNavController().navigate(
@@ -46,7 +52,9 @@ class WordsListFragment : BaseFragment() {
             )
         )
 
-        with(ViewModelProviders.of(requireActivity()).get(MainViewModel::class.java)) {
+        with(mainViewModel) {
+
+            getAllWords()
 
             words.observe(this@WordsListFragment, Observer { it ->
                 adapter.submitList(it) {
@@ -87,7 +95,7 @@ class WordsListFragment : BaseFragment() {
                 activity?.let { a ->
                     val categoriesListBottomSheet =
                         CategoryChooserBottomSheetDialogFragment.createInstance(getString(R.string.lbl_filter_by_category)) {
-                            Toast.makeText(requireContext(), it.title, Toast.LENGTH_SHORT).show()
+                            mainViewModel.filterByCategoryId(it.id)
                         }
 
                     categoriesListBottomSheet.show(

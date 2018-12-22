@@ -20,6 +20,8 @@ interface WordRepository {
 
     fun getAllWordsWithCategoryTitlePagedList(context: Context): LiveData<PagedList<WordWithCategory>>
 
+    fun getAllWordsByCategoryIDPagedList(context: Context, categoryId: Long): LiveData<PagedList<WordWithCategory>>
+
     fun getSingleRandomWordWithCategoryTitle(context: Context, wordWithCategoryCallback: WordWithCategoryCallback)
 
     fun getWordWithCategoryById(context: Context, id: Long): LiveData<WordWithCategory?>

@@ -47,6 +47,22 @@ class WordRepositoryImpl : WordRepository {
         ).build()
     }
 
+    override fun getAllWordsByCategoryIDPagedList(
+        context: Context,
+        categoryId: Long
+    ): LiveData<PagedList<WordWithCategory>> {
+        val pagedListConfig = PagedList.Config.Builder()
+            .setEnablePlaceholders(true)
+            .setPrefetchDistance(10)
+            .setPageSize(20)
+            .build()
+
+        return LivePagedListBuilder(
+            AppDB.getInstance(context).getWordDao().getByCategoryId(categoryId),
+            pagedListConfig
+        ).build()
+    }
+
     override fun getSingleRandomWordWithCategoryTitle(
         context: Context,
         wordWithCategoryCallback: WordWithCategoryCallback

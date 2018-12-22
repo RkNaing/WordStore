@@ -21,12 +21,16 @@ interface WordDao {
     @Query("SELECT COUNT(*) FROM WORD_TBL")
     fun wordsCount(): Int
 
-    @Query("SELECT WORD_TBL.*, CATEGORY_TBL.id AS word_category_id, CATEGORY_TBL.title AS word_category_title, CATEGORY_TBL.description AS word_category_description FROM WORD_TBL INNER JOIN CATEGORY_TBL ON WORD_TBL.categoryId = CATEGORY_TBL.id")
+    @Query("SELECT WORD_TBL.*, CATEGORY_TBL.id AS word_category_id, CATEGORY_TBL.title AS word_category_title, CATEGORY_TBL.description AS word_category_description FROM WORD_TBL INNER JOIN CATEGORY_TBL ON WORD_TBL.categoryId = CATEGORY_TBL.id ORDER BY WORD_TBL.title")
     fun getAllWithCategoryTitle(): DataSource.Factory<Int, WordWithCategory>
+
+    @Query("SELECT WORD_TBL.*, CATEGORY_TBL.id AS word_category_id, CATEGORY_TBL.title AS word_category_title, CATEGORY_TBL.description AS word_category_description FROM WORD_TBL INNER JOIN CATEGORY_TBL ON WORD_TBL.categoryId = CATEGORY_TBL.id WHERE CATEGORY_TBL.id = :categoryID ORDER BY WORD_TBL.title")
+    fun getByCategoryId(categoryID: Long): DataSource.Factory<Int, WordWithCategory>
 
     @Query("SELECT WORD_TBL.*, CATEGORY_TBL.id AS word_category_id, CATEGORY_TBL.title AS word_category_title, CATEGORY_TBL.description AS word_category_description FROM WORD_TBL INNER JOIN CATEGORY_TBL ON WORD_TBL.categoryId = CATEGORY_TBL.id ORDER BY RANDOM() LIMIT 1")
     fun getSingleRandomWordWithCategoryTitle(): WordWithCategory
 
     @Query("SELECT WORD_TBL.*, CATEGORY_TBL.id AS word_category_id, CATEGORY_TBL.title AS word_category_title, CATEGORY_TBL.description AS word_category_description FROM WORD_TBL INNER JOIN CATEGORY_TBL ON WORD_TBL.categoryId = CATEGORY_TBL.id WHERE WORD_TBL.id = :id")
     fun getById(id: Long): LiveData<WordWithCategory?>
+
 }

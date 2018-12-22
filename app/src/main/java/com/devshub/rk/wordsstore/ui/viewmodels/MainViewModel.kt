@@ -2,10 +2,7 @@ package com.devshub.rk.wordsstore.ui.viewmodels
 
 import android.app.Application
 import android.view.View
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
+import androidx.lifecycle.*
 import androidx.paging.PagedList
 import com.devshub.rk.wordsstore.data.model.Category
 import com.devshub.rk.wordsstore.data.model.WordWithCategory
@@ -29,9 +26,7 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
         categoryRepository.categoriesCount(context)
     }
 
-    val words: LiveData<PagedList<WordWithCategory>> by lazy {
-        wordRepository.getAllWordsWithCategoryTitlePagedList(context)
-    }
+    val words: MediatorLiveData<PagedList<WordWithCategory>> = MediatorLiveData()
 
     val screenTitle: MutableLiveData<Int> = MutableLiveData()
 
@@ -47,5 +42,16 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
         }
     }
 
+    fun getAllWords() {
+        words.addSource(wordRepository.getAllWordsWithCategoryTitlePagedList(context)) {
+            words.value = it
+        }
+    }
+
+    fun filterByCategoryId(categoryId: Long) {
+        words.addSource(wordRepository.getAllWordsByCategoryIDPagedList(context, categoryId)) {
+            words.value = it
+        }
+    }
 
 }

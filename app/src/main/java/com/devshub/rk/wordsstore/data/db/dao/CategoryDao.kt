@@ -17,7 +17,7 @@ interface CategoryDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun createCategories(categories: List<Category>): List<Long>
 
-    @Query("SELECT * FROM CATEGORY_TBL")
+    @Query("SELECT * FROM CATEGORY_TBL ORDER BY CATEGORY_TBL.title")
     fun getAll(): DataSource.Factory<Int, Category>
 
     @Update(onConflict = OnConflictStrategy.ROLLBACK)
