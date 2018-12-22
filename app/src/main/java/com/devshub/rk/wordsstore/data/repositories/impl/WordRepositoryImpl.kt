@@ -10,6 +10,7 @@ import com.devshub.rk.wordsstore.data.model.Word
 import com.devshub.rk.wordsstore.data.model.WordWithCategory
 import com.devshub.rk.wordsstore.data.repositories.WordRepository
 import com.devshub.rk.wordsstore.utils.CompletionCallback
+import com.devshub.rk.wordsstore.utils.WordWithCategoryCallback
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -29,6 +30,10 @@ class WordRepositoryImpl : WordRepository {
         operateInIO(context, { numOfRowsAffected -> completion(numOfRowsAffected > 0) }, { deleteWord(word) })
     }
 
+    override fun getWordsCount(context: Context, completion: (Int) -> Unit) {
+        operateInIO(context, completion, { wordsCount() })
+    }
+
     override fun getAllWordsWithCategoryTitlePagedList(context: Context): LiveData<PagedList<WordWithCategory>> {
         val pagedListConfig = PagedList.Config.Builder()
             .setEnablePlaceholders(true)
@@ -40,6 +45,17 @@ class WordRepositoryImpl : WordRepository {
             AppDB.getInstance(context).getWordDao().getAllWithCategoryTitle(),
             pagedListConfig
         ).build()
+    }
+
+    override fun getSingleRandomWordWithCategoryTitle(
+        context: Context,
+        wordWithCategoryCallback: WordWithCategoryCallback
+    ) {
+        operateInIO(context, wordWithCategoryCallback, { getSingleRandomWordWithCategoryTitle() })
+    }
+
+    override fun getWordWithCategoryById(context: Context, id: Long): LiveData<WordWithCategory?> {
+        return AppDB.getInstance(context).getWordDao().getById(id)
     }
 
     private inline fun <T> operateInIO(

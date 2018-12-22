@@ -46,7 +46,7 @@ class ManageCategoriesFragment : BaseFragment() {
                     }
                 }
             })
-            fabVibility.postValue(true)
+            fabVisibility.postValue(true)
         }
 
         manageCategoriesRV.adapter = adapter

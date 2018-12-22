@@ -61,7 +61,7 @@ class WordsListFragment : BaseFragment() {
             })
 
             categoriesCount.observe(this@WordsListFragment, Observer { it ->
-                fabVibility.postValue(it > 0)
+                fabVisibility.postValue(it > 0)
             })
 
             screenTitle.postValue(R.string.app_name)

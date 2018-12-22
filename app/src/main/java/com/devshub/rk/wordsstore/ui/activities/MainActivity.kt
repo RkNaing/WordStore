@@ -9,10 +9,10 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.devshub.rk.wordsstore.R
 import com.devshub.rk.wordsstore.ui.viewmodels.MainViewModel
+import com.devshub.rk.wordsstore.ui.widgets.WordWidget
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-
 
     private val navController by lazy { findNavController(R.id.mainNavigationFragment) }
 
@@ -37,8 +37,12 @@ class MainActivity : AppCompatActivity() {
                 mainAddWordFab.setOnClickListener(it)
             })
 
-            fabVibility.observe(this@MainActivity, Observer { isVisible ->
+            fabVisibility.observe(this@MainActivity, Observer { isVisible ->
                 if (isVisible) mainAddWordFab.show() else mainAddWordFab.hide()
+            })
+
+            widgetWordLiveData.observe(this@MainActivity, Observer {
+                WordWidget.refreshWordWidget(this@MainActivity, it)
             })
 
         }

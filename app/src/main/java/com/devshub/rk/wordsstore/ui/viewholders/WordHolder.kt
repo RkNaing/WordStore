@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.devshub.rk.wordsstore.R
 import com.devshub.rk.wordsstore.data.model.WordWithCategory
 import com.devshub.rk.wordsstore.extensions.addSubView
-import com.devshub.rk.wordsstore.utils.WordWithCategoryItemClickCallback
+import com.devshub.rk.wordsstore.utils.WordWithCategoryCallback
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_word.*
 
@@ -15,11 +15,11 @@ import kotlinx.android.synthetic.main.item_word.*
  **/
 class WordHolder private constructor(
     override val containerView: View,
-    val clickCallback: WordWithCategoryItemClickCallback
+    val clickCallback: WordWithCategoryCallback
 ) : RecyclerView.ViewHolder(containerView), LayoutContainer {
 
     companion object {
-        fun create(parent: ViewGroup, clickCallback: WordWithCategoryItemClickCallback): WordHolder {
+        fun create(parent: ViewGroup, clickCallback: WordWithCategoryCallback): WordHolder {
             val view = parent.addSubView(R.layout.item_word)
             return WordHolder(view, clickCallback)
         }

@@ -4,12 +4,12 @@ import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import com.devshub.rk.wordsstore.data.model.WordWithCategory
 import com.devshub.rk.wordsstore.ui.viewholders.WordHolder
-import com.devshub.rk.wordsstore.utils.WordWithCategoryItemClickCallback
+import com.devshub.rk.wordsstore.utils.WordWithCategoryCallback
 
 /**
  * Created by ZMN on 12/7/18.
  **/
-class WordsRVAdapter(private val clickCallback: WordWithCategoryItemClickCallback) :
+class WordsRVAdapter(private val clickCallback: WordWithCategoryCallback) :
     PagedListAdapter<WordWithCategory, WordHolder>(WordWithCategory.diffUtilCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordHolder {

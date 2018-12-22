@@ -11,4 +11,4 @@ typealias CompletionCallback = (Boolean) -> Unit
 
 typealias CategoryItemClickCallback = (Category) -> Unit
 
-typealias WordWithCategoryItemClickCallback = (WordWithCategory) -> Unit
+typealias WordWithCategoryCallback = (WordWithCategory) -> Unit

@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Words Store</string>
-    <string name="textWordDesc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci animi at atque error eveniet expedita hic id iste molestias mollitia nam necessitatibus nesciunt numquam officiis perferendis quisquam repellendus, rerum voluptas.</string>
+    <string name="textWordDesc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci animi at atque error
+        eveniet expedita hic id iste molestias mollitia nam necessitatibus nesciunt numquam officiis perferendis
+        quisquam repellendus, rerum voluptas.
+    </string>
     <string name="lbl_categories">Categories</string>
     <string name="lbl_filter_by_category">Filter by category</string>
     <string name="lbl_choose_category">Choose Category</string>
@@ -32,7 +35,11 @@
     <string name="msg_err_save_failed">Failed to save!</string>
     <string name="msg_info_delete_success">Successfully Deleted</string>
     <string name="msg_err_delete_failed">Failed to delete!</string>
-    <string name="msg_confirm_delete_category"><![CDATA[Are you sure to delete category \"<b>%s</b>\"?\nThis action will delete all words those fall under this category and cannot be undone!]]></string>
-    <string name="msg_confirm_delete_word"><![CDATA[Are you sure to delete word \"<b>%s</b>\"?\nThis action cannot be undone!]]></string>
+    <string name="msg_confirm_delete_category">
+        <![CDATA[Are you sure to delete category \"<b>%s</b>\"?\nThis action will delete all words those fall under this category and cannot be undone!]]></string>
+    <string name="msg_confirm_delete_word">
+        <![CDATA[Are you sure to delete word \"<b>%s</b>\"?\nThis action cannot be undone!]]></string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 
 </resources>
