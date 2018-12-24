@@ -7,7 +7,6 @@ import android.view.MenuItem
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.fragment.findNavController
 import com.devshub.rk.wordsstore.R
 import com.devshub.rk.wordsstore.extensions.gone
 import com.devshub.rk.wordsstore.extensions.visible
@@ -33,11 +32,7 @@ class WordsListFragment : BaseFragment() {
         }
 
         val adapter = WordsRVAdapter { wordWithCategory ->
-            findNavController().navigate(
-                WordsListFragmentDirections.actionSaveWord().setArgWordWithCategory(
-                    wordWithCategory
-                )
-            )
+            SaveWordDialogFragment.show(requireFragmentManager(), wordWithCategory)
         }
 
         setHasOptionsMenu(true)
@@ -68,15 +63,9 @@ class WordsListFragment : BaseFragment() {
                 }
             })
 
-            categoriesCount.observe(this@WordsListFragment, Observer { it ->
-                fabVisibility.postValue(it > 0)
-            })
-
-            screenTitle.postValue(R.string.app_name)
-            fabIcon.postValue(R.drawable.ic_add_white_24dp)
-            fabClickListener.postValue(View.OnClickListener {
-                findNavController().navigate(R.id.action_saveWord)
-            })
+//            categoriesCount.observe(this@WordsListFragment, Observer { it ->
+//                fabVisibility.postValue(it > 0)
+//            })
 
         }
 
@@ -89,7 +78,6 @@ class WordsListFragment : BaseFragment() {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId ?: 0) {
-            R.id.wordList_categories -> findNavController().navigate(R.id.action_manage_categories)
             R.id.wordList_filter_categories -> {
 
                 activity?.let { a ->

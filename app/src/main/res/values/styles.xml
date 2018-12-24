@@ -44,6 +44,8 @@
         <item name="android:textAllCaps">false</item>
     </style>
 
-
+    <style name="TextAppearance.MaterialComponents.Caption" parent="AppTheme">
+        <item name="fontFamily">@font/arimo</item>
+    </style>
 
 </resources>

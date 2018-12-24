@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+            android:id="@+id/main_nav_words"
+            android:icon="@drawable/ic_nav_words_list_black_24dp"
+            android:title="@string/main_lbl_title_words"/>
+
+    <item
+            android:id="@+id/main_nav_categories"
+            android:icon="@drawable/ic_nav_category_black_24dp"
+            android:title="@string/main_lbl_title_categories"/>
+
+    <item
+            android:id="@+id/main_nav_about"
+            android:icon="@drawable/ic_nav_about_black_24dp"
+            android:title="@string/main_lbl_title_about"/>
+
+</menu>

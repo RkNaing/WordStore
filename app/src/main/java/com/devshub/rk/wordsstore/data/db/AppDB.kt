@@ -10,8 +10,8 @@ import com.devshub.rk.wordsstore.data.db.dao.WordDao
 import com.devshub.rk.wordsstore.data.model.Category
 import com.devshub.rk.wordsstore.data.model.Word
 import com.devshub.rk.wordsstore.data.repositories.categoryRepository
-import com.devshub.rk.wordsstore.extensions.logd
 import com.devshub.rk.wordsstore.utils.SingletonHolder
+import timber.log.Timber
 
 /**
  * Created by ZMN on 12/13/18.
@@ -32,9 +32,9 @@ abstract class AppDB : RoomDatabase() {
 
             override fun onCreate(db: SupportSQLiteDatabase) {
                 super.onCreate(db)
-                logd("Populating Stocked Categories")
+                Timber.d("Populating Stocked Categories")
                 categoryRepository.createCategories(context, Category.getStockedCategories()) { success ->
-                    logd("Finished populating stocked categories. Is Success $success")
+                    Timber.d("Finished populating stocked categories. Is Success $success")
                 }
             }
 

@@ -6,8 +6,6 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
-apply plugin: "androidx.navigation.safeargs"
-
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -67,9 +65,8 @@ dependencies {
     def paging_version = "2.1.0-rc01"
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
 
-    // Navigation Component
-    implementation "android.arch.navigation:navigation-fragment-ktx:$nav_component_version"
-    implementation "android.arch.navigation:navigation-ui-ktx:$nav_component_version"
+    // Timber Logger
+    implementation 'com.jakewharton.timber:timber:4.7.1'
 
     // Debug DB
     debugImplementation 'com.amitshekhar.android:debug-db:1.0.4'

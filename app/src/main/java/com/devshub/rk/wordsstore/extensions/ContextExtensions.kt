@@ -13,10 +13,22 @@ fun Context.infoToast(@StringRes message: Int, duration: Int = Toast.LENGTH_SHOR
     Toasty.info(this, message, duration).show()
 }
 
+fun Context.infoToast(message: String, duration: Int = Toast.LENGTH_SHORT) {
+    Toasty.info(this, message, duration).show()
+}
+
 fun Context.successToast(@StringRes message: Int, duration: Int = Toast.LENGTH_SHORT) {
     Toasty.success(this, message, duration).show()
 }
 
+fun Context.successToast(message: String, duration: Int = Toast.LENGTH_SHORT) {
+    Toasty.success(this, message, duration).show()
+}
+
 fun Context.errorToast(@StringRes message: Int, duration: Int = Toast.LENGTH_SHORT) {
+    Toasty.error(this, message, duration).show()
+}
+
+fun Context.errorToast(message: String, duration: Int = Toast.LENGTH_SHORT) {
     Toasty.error(this, message, duration).show()
 }

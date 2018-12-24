@@ -1,8 +1,10 @@
 package com.devshub.rk.wordsstore.ui.viewmodels
 
 import android.app.Application
-import android.view.View
-import androidx.lifecycle.*
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.Transformations
 import androidx.paging.PagedList
 import com.devshub.rk.wordsstore.data.model.Category
 import com.devshub.rk.wordsstore.data.model.WordWithCategory
@@ -27,14 +29,6 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     }
 
     val words: MediatorLiveData<PagedList<WordWithCategory>> = MediatorLiveData()
-
-    val screenTitle: MutableLiveData<Int> = MutableLiveData()
-
-    val fabIcon: MutableLiveData<Int> = MutableLiveData()
-
-    val fabClickListener: MutableLiveData<View.OnClickListener> = MutableLiveData()
-
-    val fabVisibility: MutableLiveData<Boolean> = MutableLiveData()
 
     val widgetWordLiveData: LiveData<WordWithCategory?> by lazy {
         Transformations.switchMap(context.longLiveData(PREF_WIDGET_WORD_ID, -1)) { widgetWordId ->

@@ -1,9 +1,13 @@
 <resources>
+
     <string name="app_name">Words Store</string>
-    <string name="textWordDesc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci animi at atque error
-        eveniet expedita hic id iste molestias mollitia nam necessitatibus nesciunt numquam officiis perferendis
-        quisquam repellendus, rerum voluptas.
-    </string>
+
+    <!-- MainActivity -->
+    <string name="main_lbl_title_words">Words</string>
+    <string name="main_lbl_title_categories">Categories</string>
+    <string name="main_lbl_title_about">About</string>
+
+    <!-- Category Chooser Dialog -->
     <string name="lbl_categories">Categories</string>
     <string name="lbl_filter_by_category">Filter by category</string>
     <string name="lbl_choose_category">Choose Category</string>
@@ -14,32 +18,39 @@
     <string name="validation_enter_category_title">Please provide category title!</string>
     <string name="lbl_title_create_category">Create Category</string>
     <string name="lbl_title_update_category">Update Category</string>
-    <string name="msg_empty_category">No word categories.\nPlease add some word categories.</string>
-    <string name="msg_empty_words">No words added yet.\nPlease add some words.</string>
 
-    <string name="lbl_title_create_word">Add Word</string>
-    <string name="lbl_title_update_word">Update Word</string>
-    <string name="hint_choose_word_category">Choose word category</string>
-
-    <string name="lbl_delete_confirm">Confirm Delete</string>
+    <!-- Save Word Dialog -->
     <string name="hint_word_title">Word Title</string>
     <string name="hint_word_desc">Word Description</string>
+    <string name="hint_choose_word_category">Choose word category</string>
     <string name="validation_enter_word_title">Please provide word title!</string>
     <string name="validation_enter_word_desc">Please provide word description!</string>
     <string name="validation_choose_word_category">Please choose word category!</string>
+    <string name="lbl_title_create_word">Add Word</string>
+    <string name="lbl_title_update_word">Update Word</string>
 
+    <!-- Common -->
+    <string name="lbl_delete_confirm">Confirm Delete</string>
+    <string name="action_save">Save</string>
     <string name="action_delete">Delete</string>
     <string name="action_cancel">Cancel</string>
 
+    <!-- Messages-->
     <string name="msg_info_save_success">Successfully Saved</string>
     <string name="msg_err_save_failed">Failed to save!</string>
     <string name="msg_info_delete_success">Successfully Deleted</string>
     <string name="msg_err_delete_failed">Failed to delete!</string>
+    <string name="msg_empty_category">No word categories.\nPlease add some word categories.</string>
+    <string name="msg_empty_words">No words added yet.\nPlease add some words.</string>
     <string name="msg_confirm_delete_category">
         <![CDATA[Are you sure to delete category \"<b>%s</b>\"?\nThis action will delete all words those fall under this category and cannot be undone!]]></string>
     <string name="msg_confirm_delete_word">
         <![CDATA[Are you sure to delete word \"<b>%s</b>\"?\nThis action cannot be undone!]]></string>
-    <string name="appwidget_text">EXAMPLE</string>
-    <string name="add_widget">Add widget</string>
+    <string name="msg_add_words_add_categories">Please add at least one category in order to add word(s).</string>
 
+    <!-- Dummy Text -->
+    <string name="textWordDesc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci animi at atque error
+        eveniet expedita hic id iste molestias mollitia nam necessitatibus nesciunt numquam officiis perferendis
+        quisquam repellendus, rerum voluptas.
+    </string>
 </resources>
