@@ -6,6 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+apply plugin: 'com.google.android.gms.oss-licenses-plugin'
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -15,6 +17,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        resValue 'string', 'lbl_app_version', 'Version : ' + defaultConfig.versionName
     }
     buildTypes {
         release {
@@ -64,6 +67,9 @@ dependencies {
     // Paging Library
     def paging_version = "2.1.0-rc01"
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
+
+    // License Activity
+    implementation 'com.google.android.gms:play-services-oss-licenses:16.0.1'
 
     // Timber Logger
     implementation 'com.jakewharton.timber:timber:4.7.1'

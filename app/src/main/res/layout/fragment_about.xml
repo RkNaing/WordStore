@@ -1,12 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/about_iv_app_logo"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/app_logo_256"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="16dp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/about_tv_app_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/main_lbl_title_about"
-            android:layout_centerInParent="true"/>
+            android:fontFamily="@font/arimo_bold"
+            android:textSize="18sp"
+            android:textColor="@color/colorTextPrimary"
+            android:text="@string/app_name"
+            app:layout_constraintStart_toStartOf="@+id/about_iv_app_logo"
+            app:layout_constraintEnd_toEndOf="@+id/about_iv_app_logo"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/about_iv_app_logo"/>
 
-</RelativeLayout>
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/about_tv_app_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/arimo"
+            android:textSize="14sp"
+            android:textColor="@color/colorTextSecondary"
+            android:text="@string/lbl_app_version"
+            app:layout_constraintStart_toStartOf="@+id/about_tv_app_name"
+            app:layout_constraintEnd_toEndOf="@+id/about_tv_app_name"
+            android:layout_marginTop="4dp"
+            app:layout_constraintTop_toBottomOf="@+id/about_tv_app_name"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

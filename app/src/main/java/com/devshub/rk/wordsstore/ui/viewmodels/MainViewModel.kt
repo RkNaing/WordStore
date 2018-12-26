@@ -1,11 +1,13 @@
 package com.devshub.rk.wordsstore.ui.viewmodels
 
 import android.app.Application
+import androidx.annotation.IdRes
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.Transformations
 import androidx.paging.PagedList
+import com.devshub.rk.wordsstore.R
 import com.devshub.rk.wordsstore.data.model.Category
 import com.devshub.rk.wordsstore.data.model.WordWithCategory
 import com.devshub.rk.wordsstore.data.repositories.categoryRepository
@@ -48,4 +50,6 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
         }
     }
 
+    @IdRes
+    var currentTabMenuId: Int = R.id.main_nav_words
 }

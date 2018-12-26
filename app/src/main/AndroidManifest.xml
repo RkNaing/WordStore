@@ -5,22 +5,37 @@
 
     <application
             android:name=".app.App"
+            android:fullBackupContent="true"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:theme="@style/AppTheme"
-            tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:ignore="GoogleAppIndexingWarning">
+
         <activity
-                android:name=".ui.activities.MainActivity"
-                android:windowSoftInputMode="adjustResize">
+                android:name=".ui.activities.Splash"
+                android:screenOrientation="portrait"
+                android:theme="@style/FullScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity
+                android:name=".ui.activities.MainActivity"
+                android:windowSoftInputMode="adjustResize"
+                android:screenOrientation="portrait"/>
+
+        <activity
+                android:name="com.google.android.gms.oss.licenses.OssLicensesMenuActivity"
+                android:theme="@style/AppTheme"/>
+        <activity
+                android:name="com.google.android.gms.oss.licenses.OssLicensesActivity"
+                android:theme="@style/AppTheme"/>
 
         <receiver android:name=".ui.widgets.WordWidget">
             <intent-filter>
@@ -31,6 +46,7 @@
                     android:name="android.appwidget.provider"
                     android:resource="@xml/word_widget_info"/>
         </receiver>
+
     </application>
 
 </manifest>

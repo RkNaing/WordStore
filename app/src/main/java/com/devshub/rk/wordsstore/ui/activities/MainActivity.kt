@@ -1,6 +1,7 @@
 package com.devshub.rk.wordsstore.ui.activities
 
 import android.os.Bundle
+import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.transaction
@@ -18,12 +19,14 @@ class MainActivity : AppCompatActivity() {
 
     private val mainViewModel by lazy { ViewModelProviders.of(this).get(MainViewModel::class.java) }
 
-    private val wordsListFragment = WordsListFragment()
-    private val categoriesListFragment = CategoriesListFragment()
-    private val aboutFragment = AboutFragment()
+    private var wordsListFragment = WordsListFragment()
+    private var categoriesListFragment = CategoriesListFragment()
+    private var aboutFragment = AboutFragment()
     private var currentFragment: Fragment = wordsListFragment
 
     private var canAddWords = true
+    private var doubleBackToExitPressedOnce = false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +53,7 @@ class MainActivity : AppCompatActivity() {
 
         // Setup bottom navigation view
         mainBottomNavigationView.setOnNavigationItemSelectedListener {
+            mainViewModel.currentTabMenuId = it.itemId
             return@setOnNavigationItemSelectedListener when (it.itemId) {
                 R.id.main_nav_words -> {
                     if (canAddWords) {
@@ -87,20 +91,68 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // Initial setup for fragments
-        supportFragmentManager.transaction {
-            add(R.id.mainFragmentContainer, aboutFragment, aboutFragment::class.java.simpleName)
-            hide(aboutFragment)
+        if (savedInstanceState == null) {
+            // Initial setup for fragments
+            supportFragmentManager.transaction {
+                add(R.id.mainFragmentContainer, aboutFragment, aboutFragment.clazzTag)
+                hide(aboutFragment)
 
-            add(R.id.mainFragmentContainer, categoriesListFragment, categoriesListFragment::class.java.simpleName)
-            hide(categoriesListFragment)
+                add(R.id.mainFragmentContainer, categoriesListFragment, categoriesListFragment.clazzTag)
+                hide(categoriesListFragment)
 
-            add(R.id.mainFragmentContainer, wordsListFragment, wordsListFragment::class.java.simpleName)
+                add(R.id.mainFragmentContainer, wordsListFragment, wordsListFragment.clazzTag)
+            }
+        } else {
+            wordsListFragment = supportFragmentManager.findFragmentByTag(wordsListFragment.clazzTag)
+                    as? WordsListFragment ?: WordsListFragment()
+
+            categoriesListFragment = supportFragmentManager.findFragmentByTag(categoriesListFragment.clazzTag)
+                    as? CategoriesListFragment ?: CategoriesListFragment()
+
+            aboutFragment = supportFragmentManager.findFragmentByTag(aboutFragment.clazzTag)
+                    as? AboutFragment ?: AboutFragment()
         }
 
-        mainBottomNavigationView.selectedItemId = R.id.main_nav_words
 
 
+        mainBottomNavigationView.selectedItemId = mainViewModel.currentTabMenuId
+
+
+    }
+
+    override fun onBackPressed() {
+
+        val exit = {
+
+            if (doubleBackToExitPressedOnce) {
+                super.onBackPressed()
+                finish()
+            } else {
+                doubleBackToExitPressedOnce = true
+                infoToast(R.string.msg_double_back_to_exit)
+                Handler().postDelayed({
+
+                }, 2000)
+            }
+
+        }
+
+        when (currentFragment) {
+            aboutFragment -> mainBottomNavigationView.selectedItemId = R.id.main_nav_categories
+            categoriesListFragment -> {
+                if (canAddWords) {
+                    mainBottomNavigationView.selectedItemId = R.id.main_nav_words
+                } else {
+                    exit()
+                }
+            }
+            wordsListFragment -> {
+                exit()
+            }
+            else -> {
+                exit()
+            }
+        }
     }
 
     private fun navigateTo(destination: Fragment) {
@@ -111,6 +163,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         supportFragmentManager.transaction {
+            setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
             hide(currentFragment)
             show(destination)
             currentFragment = destination

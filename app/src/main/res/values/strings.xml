@@ -35,6 +35,12 @@
     <string name="action_delete">Delete</string>
     <string name="action_cancel">Cancel</string>
 
+    <!-- Titles -->
+    <string name="title_open_source_licenses">Open Source Licenses</string>
+
+    <!-- Splash Screen -->
+    <string name="splash_lbl_devs_hub_copyright">Brought to you by\nDevHub Copyright \u00a9 2019</string>
+
     <!-- Messages-->
     <string name="msg_info_save_success">Successfully Saved</string>
     <string name="msg_err_save_failed">Failed to save!</string>
@@ -47,6 +53,7 @@
     <string name="msg_confirm_delete_word">
         <![CDATA[Are you sure to delete word \"<b>%s</b>\"?\nThis action cannot be undone!]]></string>
     <string name="msg_add_words_add_categories">Please add at least one category in order to add word(s).</string>
+    <string name="msg_double_back_to_exit">Tap back again to exit.</string>
 
     <!-- Dummy Text -->
     <string name="textWordDesc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci animi at atque error

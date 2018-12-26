@@ -18,6 +18,9 @@ abstract class BaseFragment : Fragment() {
 
     protected abstract fun onViewReady(view: View, savedInstanceState: Bundle?)
 
+    val clazzTag
+        get() = this::class.java.simpleName
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Timber.d("${this::class.java.simpleName} onCreate Called")
