@@ -1,6 +1,7 @@
 package com.devshub.rk.wordsstore.ui.fragments
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.method.LinkMovementMethod
@@ -52,6 +53,18 @@ class AboutFragment : BaseFragment() {
             messageTv?.movementMethod = LinkMovementMethod.getInstance()
         }
 
+        about_visit_devs_hub.setOnClickListener {
+            val browserIntent = Intent(Intent.ACTION_VIEW)
+            browserIntent.data = Uri.parse("https://www.devshub.co/")
+            startActivity(Intent.createChooser(browserIntent, getString(R.string.about_lbl_visit_devs_hub)))
+        }
+
+        about_feedback_container.setOnClickListener {
+            val mailIntent = Intent(Intent.ACTION_SENDTO)
+            mailIntent.data =
+                    Uri.parse("mailto:devshub15@gmail.com?subject=${Uri.encode(getString(R.string.about_lbl_feedback_subject))}")
+            startActivity(Intent.createChooser(mailIntent, getString(R.string.about_feedback_chooser_title)))
+        }
 
     }
 
