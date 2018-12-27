@@ -18,7 +18,7 @@ abstract class BaseFragment : Fragment() {
 
     protected abstract fun onViewReady(view: View, savedInstanceState: Bundle?)
 
-    val clazzTag
+    val clazzTag: String
         get() = this::class.java.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {

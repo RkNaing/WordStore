@@ -63,10 +63,6 @@ class WordsListFragment : BaseFragment() {
                 }
             })
 
-//            categoriesCount.observe(this@WordsListFragment, Observer { it ->
-//                fabVisibility.postValue(it > 0)
-//            })
-
         }
 
     }
