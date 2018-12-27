@@ -7,7 +7,6 @@
         android:layout_height="match_parent"
         android:background="@color/colorScreenBg">
 
-
     <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/welcomeSlideTvTitle"
             android:layout_width="wrap_content"
@@ -22,17 +21,15 @@
             android:layout_marginTop="16dp"
             app:layout_constraintTop_toTopOf="parent"/>
 
-
     <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/welcomeSlideIvFoto"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:scaleType="centerCrop"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             tools:src="@drawable/app_logo_256"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintTop_toBottomOf="@+id/welcomeSlideTvTitle"/>
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -44,7 +41,7 @@
             android:textSize="16sp"
             android:textAlignment="viewStart"
             android:textColor="@color/colorTextPrimary"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintTop_toBottomOf="@+id/welcomeSlideIvFoto"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="16dp"

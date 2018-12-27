@@ -5,7 +5,8 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorScreenBg">
+        android:background="@color/colorScreenBg"
+        tools:layout_editor_absoluteY="25dp">
 
     <androidx.viewpager.widget.ViewPager
             android:id="@+id/activityWelcomePager"
@@ -21,25 +22,28 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/colorDivider"
-            app:layout_constraintEnd_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/activityWelcomeSlideIndicatorContainer"
-            tools:layout_editor_absoluteY="278dp"
-            tools:layout_editor_absoluteX="0dp"/>
-
-    <LinearLayout
-            android:id="@+id/activityWelcomeSlideIndicatorContainer"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:orientation="horizontal"
-            android:gravity="center"
-            tools:background="@color/colorPrimaryLight"
-            tools:ignore="UselessLeaf"
-            app:layout_constraintBottom_toBottomOf="@+id/activityWelcomeBtnSkip"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/activityWelcomeBtnSkip"
+            app:layout_constraintBottom_toTopOf="@+id/activityWelcomeBtnNext"
             />
+
+    <com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator
+            android:id="@+id/activityWelcomeSlideIndicatorContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:dampingRatio="0.5"
+            app:dotsColor="@color/colorPrimary"
+            app:dotsStrokeColor="@color/colorAccent"
+            app:dotsCornerRadius="16dp"
+            app:dotsSize="16dp"
+            app:dotsSpacing="6dp"
+            app:dotsStrokeWidth="2dp"
+            app:stiffness="300"
+            app:layout_constraintTop_toTopOf="@id/activityWelcomeBtnNext"
+            app:layout_constraintBottom_toBottomOf="@id/activityWelcomeBtnNext"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/activityWelcomeBtnNext"
@@ -47,10 +51,10 @@
             android:layout_height="wrap_content"
             android:text="@string/action_next"
             android:fontFamily="@font/arimo"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:background="@android:color/transparent"
+            android:textColor="@color/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/activityWelcomeSlideIndicatorContainer"
-            app:layout_constraintTop_toTopOf="@+id/activityWelcomeSlideIndicatorContainer"
+            app:layout_constraintBottom_toBottomOf="parent"
             />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -59,9 +63,10 @@
             android:layout_height="wrap_content"
             android:text="@string/action_skip"
             android:fontFamily="@font/arimo"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:textColor="@color/colorPrimary"
+            android:background="@android:color/transparent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            />
+            app:layout_constraintBottom_toBottomOf="@id/activityWelcomeSlideIndicatorContainer"
+            app:layout_constraintTop_toTopOf="@id/activityWelcomeSlideIndicatorContainer"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

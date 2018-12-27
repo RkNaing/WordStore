@@ -42,5 +42,219 @@
             android:layout_marginTop="4dp"
             app:layout_constraintTop_toBottomOf="@+id/about_tv_app_name"/>
 
+    <androidx.cardview.widget.CardView
+            android:id="@+id/about_content_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="3dp"
+            app:layout_constraintTop_toBottomOf="@+id/about_tv_app_version"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:dividerPadding="4dp"
+                android:showDividers="middle">
+
+            <RelativeLayout
+                    android:id="@+id/about_app_intro_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:gravity="center_vertical"
+                    android:foreground="?selectableItemBackground">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/about_iv_welcome"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_welcome"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="12dp"
+                        android:layout_toEndOf="@id/about_iv_welcome"
+                        android:fontFamily="@font/arimo"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="16sp"
+                        android:text="@string/about_lbl_app_intro"
+                        android:drawableEnd="@drawable/ic_detail_arrow_primary_24dp"
+                        />
+
+            </RelativeLayout>
+
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDivider"/>
+
+            <RelativeLayout
+                    android:id="@+id/about_lib_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:gravity="center_vertical"
+                    android:foreground="?selectableItemBackground">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/about_iv_license"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_license"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="12dp"
+                        android:layout_toEndOf="@id/about_iv_license"
+                        android:fontFamily="@font/arimo"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="16sp"
+                        android:text="@string/about_lbl_open_source_lib"
+                        android:drawableEnd="@drawable/ic_detail_arrow_primary_24dp"
+                        />
+
+            </RelativeLayout>
+
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDivider"/>
+
+            <RelativeLayout
+                    android:id="@+id/about_assets_license_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:gravity="center_vertical"
+                    android:foreground="?selectableItemBackground">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/about_iv_asset_license"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_assets_license"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="12dp"
+                        android:layout_toEndOf="@id/about_iv_asset_license"
+                        android:fontFamily="@font/arimo"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="16sp"
+                        android:text="@string/about_lbl_assets_license"
+                        android:drawableEnd="@drawable/ic_detail_arrow_primary_24dp"
+                        />
+
+            </RelativeLayout>
+
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDivider"/>
+
+            <RelativeLayout
+                    android:id="@+id/about_feedback_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:gravity="center_vertical"
+                    android:foreground="?selectableItemBackground">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/about_iv_feedback"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_feedback"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="12dp"
+                        android:layout_toEndOf="@id/about_iv_feedback"
+                        android:fontFamily="@font/arimo"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="16sp"
+                        android:text="@string/about_lbl_feedback"
+                        android:drawableEnd="@drawable/ic_detail_arrow_primary_24dp"
+                        />
+
+            </RelativeLayout>
+
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDivider"/>
+
+            <RelativeLayout
+                    android:id="@+id/about_visit_devs_hub"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:gravity="center_vertical"
+                    android:foreground="?selectableItemBackground">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/about_iv_web"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_web_page"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="12dp"
+                        android:layout_toEndOf="@id/about_iv_web"
+                        android:fontFamily="@font/arimo"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="16sp"
+                        android:text="@string/about_lbl_visit_devs_hub"
+                        android:drawableEnd="@drawable/ic_detail_arrow_primary_24dp"
+                        />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,7 +5,7 @@
                     android:updatePeriodMillis="300000"
                     android:previewImage="@drawable/widget_preview"
                     android:initialLayout="@layout/word_widget"
-                    android:resizeMode="vertical"
+                    android:resizeMode="horizontal|vertical"
                     android:widgetCategory="home_screen"
                     android:initialKeyguardLayout="@layout/word_widget">
 </appwidget-provider>

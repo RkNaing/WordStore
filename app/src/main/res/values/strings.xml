@@ -29,13 +29,14 @@
     <string name="lbl_title_create_word">Add Word</string>
     <string name="lbl_title_update_word">Update Word</string>
 
-    <!-- Common -->
+    <!-- Actions -->
     <string name="lbl_delete_confirm">Confirm Delete</string>
     <string name="action_save">Save</string>
     <string name="action_delete">Delete</string>
     <string name="action_cancel">Cancel</string>
     <string name="action_next">Next</string>
     <string name="action_skip">Skip</string>
+    <string name="action_got_it">Got It</string>
 
     <!-- Titles -->
     <string name="title_open_source_licenses">Open Source Licenses</string>
@@ -44,8 +45,8 @@
     <string name="splash_lbl_devs_hub_copyright">Brought to you by\nDevHub Copyright \u00a9 2019</string>
 
     <!-- Welcome Screen -->
-    <string name="welcome_side_one_title">Hello</string>
-    <string name="welcome_side_one_desc">Words store is a free form, light-weight and short to the point self vocabulary builder application for beef up your vocabulary.</string>
+    <string name="welcome_side_one_title">Hi, there..</string>
+    <string name="welcome_side_one_desc">Words store is a free form, light-weight and short to the point self vocabulary builder application to beef up your vocabulary.</string>
     <string name="welcome_slide_two_title">Features</string>
     <string name="welcome_slide_two_desc">Packed with easy to use simple features to facilitate our application users to easily note the newly learned words down and to revise and keep them in a categorized manner.</string>
     <string name="welcome_slide_three_title">Ultra-efficient Widget</string>
@@ -53,7 +54,14 @@
     <string name="welcome_slide_four_title">All the very best to you</string>
     <string name="welcome_slide_four_desc">All the best for your vocabulary building process from our team at DevsHub Co.Ltd. Keep making your vocabulary stronger and richer as it is a fact that vocabularies are the fundamental building blocks for the four skills of any language. We intentionally kept the vocabulary note down process manual in this application so that our users can note down the words descriptions in the way they really understand.</string>
 
-
+    <!-- About Screen -->
+    <string name="about_lbl_open_source_lib">Open source libraries</string>
+    <string name="about_lbl_feedback">Feedback</string>
+    <string name="about_lbl_visit_devs_hub">Visit DevsHub</string>
+    <string name="about_lbl_app_intro">App Intro</string>
+    <string name="about_lbl_assets_license">Assets License</string>
+    <string name="about_dialog_title_assets_license">App assets license</string>
+    <string name="about_dialog_msg_asset_license">All the graphical assets used in this application are adopted from open source websites such as www.flaticon.com and www.iconfinder.com .</string>
 
     <!-- Messages-->
     <string name="msg_info_save_success">Successfully Saved</string>

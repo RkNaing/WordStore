@@ -1,6 +1,8 @@
 package com.devshub.rk.wordsstore.ui.activities
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.devshub.rk.wordsstore.R
@@ -17,6 +19,12 @@ class Splash : AppCompatActivity() {
 
         // Warm up app database
         AppDB.getInstance(this)
+        Handler().postDelayed({
+            val welcomeIntent = WelcomeActivity.getWelcomeIntent(this)
+            welcomeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(welcomeIntent)
+            finish()
+        }, 2000)
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
