@@ -7,6 +7,8 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.devshub.rk.wordsstore.R
 import com.devshub.rk.wordsstore.data.db.AppDB
+import com.devshub.rk.wordsstore.utils.PREF_IS_INITIAL_LAUNCH
+import com.devshub.rk.wordsstore.utils.PreferenceHelper
 
 /**
  * Created by ZMN on 12/26/18.
@@ -20,9 +22,15 @@ class Splash : AppCompatActivity() {
         // Warm up app database
         AppDB.getInstance(this)
         Handler().postDelayed({
-            val welcomeIntent = WelcomeActivity.getWelcomeIntent(this)
-            welcomeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(welcomeIntent)
+            val isInitialLaunch = PreferenceHelper.getInstance(this).getBooleanPref(PREF_IS_INITIAL_LAUNCH, true)
+            val intent = if (isInitialLaunch) {
+                PreferenceHelper.getInstance(this).setBooleanPref(PREF_IS_INITIAL_LAUNCH, false)
+                WelcomeActivity.getWelcomeIntent(this)
+            } else {
+                Intent(this, MainActivity::class.java)
+            }
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
             finish()
         }, 2000)
     }
