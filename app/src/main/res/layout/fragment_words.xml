@@ -7,14 +7,29 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <FrameLayout
+    <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/wordsFragmentTvCount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:fontFamily="@font/arimo"
+                android:textSize="16sp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="2dp"
+                android:textColor="@color/colorTextSecondary"
+                tools:text="100 Words"/>
 
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/wordsFragmentRvWords"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_below="@id/wordsFragmentTvCount"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:visibility="gone"
                 android:paddingTop="5dp"
@@ -39,6 +54,7 @@
                     android:src="@drawable/img_empty"/>
 
             <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/wordsFragmentTvEmptyMessage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorTextSecondary"
@@ -49,7 +65,7 @@
 
         </LinearLayout>
 
-    </FrameLayout>
+    </RelativeLayout>
 
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

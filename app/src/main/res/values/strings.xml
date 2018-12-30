@@ -72,6 +72,7 @@
     <string name="msg_err_delete_failed">Failed to delete!</string>
     <string name="msg_empty_category">No word categories.\nPlease add some word categories.</string>
     <string name="msg_empty_words">No words added yet.\nPlease add some words.</string>
+    <string name="msg_empty_words_by_category">No words in %s yet.</string>
     <string name="msg_confirm_delete_category">
         <![CDATA[Are you sure to delete category \"<b>%s</b>\"?\nThis action will delete all words those fall under this category and cannot be undone!]]></string>
     <string name="msg_confirm_delete_word">
