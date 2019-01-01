@@ -20,7 +20,7 @@ data class WelcomeTopic(
                     WelcomeTopic(
                         title = R.string.welcome_side_one_title,
                         description = R.string.welcome_side_one_desc,
-                        logo = R.drawable.app_logo_256
+                        logo = R.drawable.welcome_slide_one_lg
                     )
                 )
 
@@ -28,7 +28,7 @@ data class WelcomeTopic(
                     WelcomeTopic(
                         title = R.string.welcome_slide_two_title,
                         description = R.string.welcome_slide_two_desc,
-                        logo = R.drawable.features
+                        logo = R.drawable.welcome_slide_two_lg
                     )
                 )
 
@@ -36,7 +36,7 @@ data class WelcomeTopic(
                     WelcomeTopic(
                         title = R.string.welcome_slide_three_title,
                         description = R.string.welcome_slide_three_desc,
-                        logo = R.drawable.widget_preview
+                        logo = R.drawable.welcome_slide_three_lg
                     )
                 )
 
@@ -44,7 +44,7 @@ data class WelcomeTopic(
                     WelcomeTopic(
                         title = R.string.welcome_slide_four_title,
                         description = R.string.welcome_slide_four_desc,
-                        logo = R.drawable.devshub_logo
+                        logo = R.drawable.welcome_slide_four_lg
                     )
                 )
             }
