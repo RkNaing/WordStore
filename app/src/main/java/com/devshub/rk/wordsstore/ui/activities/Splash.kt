@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import com.devshub.rk.wordsstore.R
 import com.devshub.rk.wordsstore.data.db.AppDB
+import com.devshub.rk.wordsstore.extensions.observeOnce
 import com.devshub.rk.wordsstore.utils.PREF_IS_INITIAL_LAUNCH
 import com.devshub.rk.wordsstore.utils.PreferenceHelper
 
@@ -19,8 +21,21 @@ class Splash : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        // Warm up app database
-        AppDB.getInstance(this)
+        // Warm up app database to avoid faulty first time live data callback in MainActivity
+        AppDB.getInstance(this).getCategoryDao().categoriesCount().observeOnce(Observer {
+            init()
+        })
+
+    }
+
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        if (hasFocus) {
+            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+        }
+    }
+
+    private fun init() {
         Handler().postDelayed({
             val isInitialLaunch = PreferenceHelper.getInstance(this).getBooleanPref(PREF_IS_INITIAL_LAUNCH, true)
             val intent = if (isInitialLaunch) {
@@ -32,14 +47,7 @@ class Splash : AppCompatActivity() {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
             finish()
-        }, 2000)
-    }
-
-    override fun onWindowFocusChanged(hasFocus: Boolean) {
-        super.onWindowFocusChanged(hasFocus)
-        if (hasFocus) {
-            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-        }
+        }, 1500)
     }
 
 }

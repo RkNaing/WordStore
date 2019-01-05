@@ -2,6 +2,7 @@ package com.devshub.rk.wordsstore.ui.widgets
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
+import android.appwidget.AppWidgetManager.ACTION_APPWIDGET_UPDATE
 import android.appwidget.AppWidgetProvider
 import android.content.ComponentName
 import android.content.Context
@@ -60,7 +61,7 @@ class WordWidget : AppWidgetProvider() {
                 appWidgetManager.updateAppWidget(wordWidget, views)
             }
 
-            if (intent.action == ACTION_RELOAD_WIDGET) {
+            if (intent.action == ACTION_RELOAD_WIDGET || intent.action == ACTION_APPWIDGET_UPDATE) {
                 loadAndInflateWidgetData(context, updateOperation)
             } else if (intent.action == ACTION_REFRESH_WIDGET) {
                 val wordWithCategory: WordWithCategory? = intent.getParcelableExtra(ARG_WORD_WITH_CATEGORY)
