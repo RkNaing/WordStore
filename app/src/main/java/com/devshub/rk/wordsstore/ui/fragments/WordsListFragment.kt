@@ -63,7 +63,7 @@ class WordsListFragment : BaseFragment() {
 
             getAllWords()
 
-            words.observe(this@WordsListFragment, Observer { it ->
+            words.observe(this@WordsListFragment, Observer {
                 val wordsCountLabel = "${it.count()} $currentCategory"
                 wordsFragmentTvCount.text = wordsCountLabel
                 adapter.submitList(it) {
@@ -96,15 +96,16 @@ class WordsListFragment : BaseFragment() {
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-        inflater?.inflate(R.menu.word_list_menu, menu)
-        val filterMenuItem = menu?.findItem(R.id.wordList_filter_categories)
+        inflater.inflate(R.menu.word_list_menu, menu)
+        val filterMenuItem = menu.findItem(R.id.wordList_filter_categories)
         filterMenuItem?.isVisible = shouldShowFilter
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when (item?.itemId ?: 0) {
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
             R.id.wordList_filter_categories -> {
 
                 activity?.let { a ->

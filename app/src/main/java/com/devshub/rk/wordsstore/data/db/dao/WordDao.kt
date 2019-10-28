@@ -12,7 +12,7 @@ interface WordDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addWord(word: Word): Long
 
-    @Update(onConflict = OnConflictStrategy.ROLLBACK)
+    @Update(onConflict = OnConflictStrategy.ABORT)
     fun updateWord(word: Word): Int
 
     @Delete

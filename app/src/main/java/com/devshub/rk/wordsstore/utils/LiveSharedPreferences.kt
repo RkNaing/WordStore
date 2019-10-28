@@ -4,8 +4,8 @@ package com.devshub.rk.wordsstore.utils
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.preference.PreferenceManager
 import androidx.lifecycle.LiveData
+import androidx.preference.PreferenceManager
 
 abstract class SharedPreferenceLiveData<T>(
     val sharedPrefs: SharedPreferences,

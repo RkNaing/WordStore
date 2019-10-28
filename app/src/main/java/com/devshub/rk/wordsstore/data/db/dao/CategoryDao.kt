@@ -20,7 +20,7 @@ interface CategoryDao {
     @Query("SELECT * FROM CATEGORY_TBL ORDER BY CATEGORY_TBL.title")
     fun getAll(): DataSource.Factory<Int, Category>
 
-    @Update(onConflict = OnConflictStrategy.ROLLBACK)
+    @Update(onConflict = OnConflictStrategy.ABORT)
     fun updateCategory(category: Category): Int
 
     @Delete

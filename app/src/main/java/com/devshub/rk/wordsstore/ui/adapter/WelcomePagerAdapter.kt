@@ -5,7 +5,10 @@ import androidx.fragment.app.FragmentPagerAdapter
 import com.devshub.rk.wordsstore.data.model.WelcomeTopic
 import com.devshub.rk.wordsstore.ui.fragments.WelcomeSlideFragment
 
-class WelcomePagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {
+class WelcomePagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(
+    fragmentManager,
+    BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
+) {
 
     private val topics = WelcomeTopic.getTopics()
 

@@ -3,8 +3,9 @@ package com.devshub.rk.wordsstore.ui.activities
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.transaction
+import androidx.fragment.app.commitNow
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.devshub.rk.wordsstore.R
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
         setSupportActionBar(mainToolbar)
-
+        delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_YES
         // Observe ViewModel values
         with(mainViewModel) {
 
@@ -93,11 +94,15 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             // Initial setup for fragments
-            supportFragmentManager.transaction {
+            supportFragmentManager.commitNow(true) {
                 add(R.id.mainFragmentContainer, aboutFragment, aboutFragment.clazzTag)
                 hide(aboutFragment)
 
-                add(R.id.mainFragmentContainer, categoriesListFragment, categoriesListFragment.clazzTag)
+                add(
+                    R.id.mainFragmentContainer,
+                    categoriesListFragment,
+                    categoriesListFragment.clazzTag
+                )
                 hide(categoriesListFragment)
 
                 add(R.id.mainFragmentContainer, wordsListFragment, wordsListFragment.clazzTag)
@@ -106,8 +111,9 @@ class MainActivity : AppCompatActivity() {
             wordsListFragment = supportFragmentManager.findFragmentByTag(wordsListFragment.clazzTag)
                     as? WordsListFragment ?: WordsListFragment()
 
-            categoriesListFragment = supportFragmentManager.findFragmentByTag(categoriesListFragment.clazzTag)
-                    as? CategoriesListFragment ?: CategoriesListFragment()
+            categoriesListFragment =
+                supportFragmentManager.findFragmentByTag(categoriesListFragment.clazzTag)
+                        as? CategoriesListFragment ?: CategoriesListFragment()
 
             aboutFragment = supportFragmentManager.findFragmentByTag(aboutFragment.clazzTag)
                     as? AboutFragment ?: AboutFragment()
@@ -162,7 +168,7 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        supportFragmentManager.transaction {
+        supportFragmentManager.commitNow(true) {
             setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
             hide(currentFragment)
             show(destination)
