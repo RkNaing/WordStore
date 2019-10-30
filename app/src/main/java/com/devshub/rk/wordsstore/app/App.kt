@@ -1,6 +1,9 @@
 package com.devshub.rk.wordsstore.app
 
 import android.app.Application
+import com.devshub.rk.wordsstore.utils.PREF_THEME
+import com.devshub.rk.wordsstore.utils.PreferenceHelper
+import com.devshub.rk.wordsstore.utils.ThemeHelper
 import timber.log.Timber
 
 /**
@@ -16,6 +19,10 @@ class App : Application() {
         super.onCreate()
         instance = this
         Timber.plant(Timber.DebugTree())
+
+        val selectedTheme =
+            PreferenceHelper.getInstance(this).getStringPref(PREF_THEME, ThemeHelper.DEFAULT_MODE)
+        ThemeHelper.applyTheme(selectedTheme)
     }
 
 }

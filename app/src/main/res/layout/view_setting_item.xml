@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:gravity="center_vertical"
+        android:paddingStart="12dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="8dp"
+        tools:ignore="UnusedAttribute">
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/vsi_ivIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:tint="@color/colorIconsTint"
+            tools:src="@drawable/ic_theme" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/vsi_ivDetailArrow"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:tint="@color/colorIconsTint"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_detail_arrow_primary_24dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/vsi_tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_toStartOf="@id/vsi_ivDetailArrow"
+            android:layout_toEndOf="@id/vsi_ivIcon"
+            style="@style/AppTextContent"
+            tools:text="@string/about_lbl_themes" />
+
+</RelativeLayout>

@@ -58,12 +58,14 @@
     <string name="about_lbl_open_source_lib">Open source libraries</string>
     <string name="about_lbl_feedback">Feedback</string>
     <string name="about_lbl_visit_devs_hub">Visit DevsHub</string>
+    <string name="about_lbl_themes">Themes</string>
     <string name="about_lbl_app_intro">App Intro</string>
     <string name="about_lbl_assets_license">Assets License</string>
     <string name="about_dialog_title_assets_license">App assets license</string>
     <string name="about_dialog_msg_asset_license">All the graphical assets used in this application are adopted from open source websites such as www.flaticon.com and www.iconfinder.com .</string>
     <string name="about_lbl_feedback_subject">Words Store Android App Feedback</string>
     <string name="about_feedback_chooser_title">Send Words Store Feedback</string>
+    <string name="about_dialog_title_select_theme">Select Theme</string>
 
     <!-- Messages-->
     <string name="msg_info_save_success">Successfully Saved</string>

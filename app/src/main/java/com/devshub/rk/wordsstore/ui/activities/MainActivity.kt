@@ -3,7 +3,6 @@ package com.devshub.rk.wordsstore.ui.activities
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commitNow
 import androidx.lifecycle.Observer
@@ -34,7 +33,6 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
         setSupportActionBar(mainToolbar)
-        delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_YES
         // Observe ViewModel values
         with(mainViewModel) {
 

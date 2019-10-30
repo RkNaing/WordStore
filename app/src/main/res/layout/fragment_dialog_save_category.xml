@@ -22,11 +22,9 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:fontFamily="@font/arimo_bold"
                 android:text="@string/lbl_title_create_category"
                 android:textAlignment="center"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="22sp"
+                style="@style/AppTextTitle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
@@ -62,6 +60,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/arimo"
+                    android:textColor="@color/colorTextPrimary"
                     android:inputType="text"
                     android:singleLine="true"/>
 
@@ -88,6 +87,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/arimo"
                     android:gravity="top"
+                    android:textColor="@color/colorTextPrimary"
                     android:inputType="textMultiLine"
                     android:minLines="4"
                     android:textSize="14sp"/>

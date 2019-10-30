@@ -1,72 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorScreenBg"
-        tools:layout_editor_absoluteY="25dp">
+        android:layout_height="match_parent">
 
     <androidx.viewpager.widget.ViewPager
             android:id="@+id/activityWelcomePager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     <View
             android:id="@+id/activityWelcomeControlsDividerView"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/colorDivider"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/activityWelcomeBtnNext"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/activityWelcomeBtnNext"
-            />
+            app:layout_constraintStart_toStartOf="parent" />
 
     <com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator
             android:id="@+id/activityWelcomeSlideIndicatorContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:dampingRatio="0.5"
-            app:dotsColor="@color/colorPrimary"
-            app:dotsStrokeColor="@color/colorAccent"
+            app:dotsColor="@color/colorIconsTint"
             app:dotsCornerRadius="16dp"
             app:dotsSize="16dp"
             app:dotsSpacing="6dp"
+            app:dotsStrokeColor="@color/colorAccent"
             app:dotsStrokeWidth="2dp"
-            app:stiffness="300"
-            app:layout_constraintTop_toTopOf="@id/activityWelcomeBtnNext"
             app:layout_constraintBottom_toBottomOf="@id/activityWelcomeBtnNext"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-    <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/activityWelcomeBtnNext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/action_next"
-            android:fontFamily="@font/arimo"
-            android:background="@android:color/transparent"
-            android:textColor="@color/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            />
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/activityWelcomeBtnNext"
+            app:stiffness="300" />
 
-    <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/activityWelcomeBtnSkip"
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/activityWelcomeBtnNext"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/action_skip"
-            android:fontFamily="@font/arimo"
-            android:textColor="@color/colorPrimary"
             android:background="@android:color/transparent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:fontFamily="@font/arimo"
+            android:text="@string/action_next"
+            android:layout_marginEnd="8dp"
+            android:textColor="@color/colorControlContent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/activityWelcomeBtnSkip"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/arimo"
+            android:text="@string/action_skip"
+            android:layout_marginStart="8dp"
+            android:textColor="@color/colorControlContent"
             app:layout_constraintBottom_toBottomOf="@id/activityWelcomeSlideIndicatorContainer"
-            app:layout_constraintTop_toTopOf="@id/activityWelcomeSlideIndicatorContainer"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/activityWelcomeSlideIndicatorContainer" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

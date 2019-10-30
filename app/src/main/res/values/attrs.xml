@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="SettingItemView">
+        <attr name="vsi_icon" format="reference"/>
+        <attr name="vsi_title" format="reference"/>
+    </declare-styleable>
+
+</resources>

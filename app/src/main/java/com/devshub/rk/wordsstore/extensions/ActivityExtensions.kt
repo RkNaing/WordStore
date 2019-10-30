@@ -5,6 +5,7 @@ import android.content.Context
 import android.text.Spanned
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import com.devshub.rk.wordsstore.R
 
 /**
@@ -19,7 +20,7 @@ fun Activity.dismissSoftKeyboard() {
 }
 
 fun Activity.showDeleteConfirmDialog(message: Spanned, onDeleteCallback: () -> Unit) {
-    AlertDialog.Builder(this, R.style.DeleteConfirmAlertDialogStyle)
+    val dialog = AlertDialog.Builder(this)
         .setTitle(R.string.lbl_delete_confirm)
         .setMessage(message)
         .setPositiveButton(R.string.action_delete) { dialog, _ ->
@@ -29,5 +30,16 @@ fun Activity.showDeleteConfirmDialog(message: Spanned, onDeleteCallback: () -> U
         .setNegativeButton(R.string.action_cancel) { dialog, _ ->
             dialog.dismiss()
         }
-        .show()
+        .create()
+    dialog.setOnShowListener {
+        with(dialog.getButton(AlertDialog.BUTTON_POSITIVE)){
+            setTextColor(ContextCompat.getColor(dialog.context,android.R.color.holo_red_light))
+            isAllCaps = false
+        }
+        with(dialog.getButton(AlertDialog.BUTTON_NEGATIVE)){
+            setTextColor(ContextCompat.getColor(dialog.context,R.color.colorTextSecondary))
+            isAllCaps = false
+        }
+    }
+    dialog.show()
 }

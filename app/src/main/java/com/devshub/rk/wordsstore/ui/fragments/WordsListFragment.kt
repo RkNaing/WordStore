@@ -5,6 +5,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.devshub.rk.wordsstore.R
@@ -39,6 +40,7 @@ class WordsListFragment : BaseFragment() {
 
     override fun onViewReady(view: View, savedInstanceState: Bundle?) {
 
+        wordsFragmentSwipeRefreshLayout.setColorSchemeColors(ContextCompat.getColor(requireContext(),R.color.colorPrimary))
         wordsFragmentSwipeRefreshLayout.setOnRefreshListener {
             wordsFragmentSwipeRefreshLayout.isRefreshing = false
             currentCategory = ALL_WORDS

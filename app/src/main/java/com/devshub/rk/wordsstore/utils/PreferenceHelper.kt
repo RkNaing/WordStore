@@ -3,8 +3,8 @@
 package com.devshub.rk.wordsstore.utils
 
 import android.content.Context
-import android.preference.PreferenceManager
 import androidx.core.content.edit
+import androidx.preference.PreferenceManager
 
 /**
  * Created by ZMN on 11/28/18.

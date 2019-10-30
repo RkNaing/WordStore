@@ -38,10 +38,9 @@
         <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorTextSecondary"
+                style="@style/AppTextCaption"
                 android:gravity="center"
                 android:text="@string/msg_empty_category"
-                android:fontFamily="@font/arimo"
                 />
 
     </LinearLayout>

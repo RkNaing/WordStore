@@ -6,7 +6,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        android:background="@color/colorScreenBg"
         tools:context=".ui.activities.MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -24,7 +23,7 @@
                 android:layout_height="?attr/actionBarSize"
                 android:background="?attr/colorPrimary"
                 app:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
-                app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
+                app:popupTheme="@style/ToolbarPopupTheme"
                 />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -38,7 +37,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/mainBottomNavigationView"/>
-
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/mainAddWordFab"
@@ -61,65 +59,12 @@
             android:id="@+id/mainBottomNavigationView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:background="?android:attr/windowBackground"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:menu="@menu/main_nav"
+            app:itemIconTint="@drawable/tint_bottom_nav_icon"
+            app:itemTextColor="@drawable/tint_bottom_nav_icon"
             />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <!--<?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:fitsSystemWindows="true"
-android:background="@color/colorScreenBg"
-tools:context=".ui.activities.MainActivity">
-
-<com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/mainAppBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
-
-    <androidx.appcompat.widget.Toolbar
-            android:id="@+id/mainToolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
-            />
-
-</com.google.android.material.appbar.AppBarLayout>
-
-<fragment
-        android:id="@+id/mainNavigationFragment"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/main_nav_graph"/>
-
-<com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/mainAddWordFab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_add_white_24dp"
-        app:backgroundTint="@color/colorAccent"
-        app:fabCustomSize="60dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:layout_gravity="bottom|end"
-        app:maxImageSize="36dp"
-        app:rippleColor="@color/colorPrimaryLight"
-        app:tint="@android:color/white"/>
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>-->

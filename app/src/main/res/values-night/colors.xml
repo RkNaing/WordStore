@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#121212</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorPrimaryLight">#ede5e2</color>
+    <color name="colorAccent">#FF9800</color>
+    <color name="colorTextPrimary">#DEFFFFFF</color>
+    <color name="colorTextSecondary">#99FFFFFF</color>
+    <color name="colorTextTitle">@color/colorAccent</color>
+    <color name="colorDivider">#BDBDBD</color>
+    <color name="colorScreenBg">#f3f3f3</color>
+    <color name="colorModalBg">#424242</color>
+    <color name="colorIconsTint">#CCFFFFFF</color>
+    <color name="colorBottomNavSelected">@color/colorAccent</color>
+    <color name="colorBottomNavUnSelected">#99FFFFFF</color>
+    <color name="colorControlContent">@color/colorAccent</color>
+</resources>
