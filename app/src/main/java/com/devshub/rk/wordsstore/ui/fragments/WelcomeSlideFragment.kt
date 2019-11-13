@@ -5,6 +5,7 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import com.devshub.rk.wordsstore.R
 import com.devshub.rk.wordsstore.data.model.WelcomeTopic
+import com.devshub.rk.wordsstore.extensions.setTextAsync
 import kotlinx.android.synthetic.main.fragment_welcome_slide.*
 
 class WelcomeSlideFragment : BaseFragment() {
@@ -26,8 +27,8 @@ class WelcomeSlideFragment : BaseFragment() {
     override fun onViewReady(view: View, savedInstanceState: Bundle?) {
         val topic: WelcomeTopic? = arguments?.getParcelable(ARGS_TOPIC)
         topic?.let {
-            welcomeSlideTvTitle.text = getString(it.title)
-            welcomeSlideTvDescription.text = getString(it.description)
+            welcomeSlideTvTitle.setTextAsync(getString(it.title))
+            welcomeSlideTvDescription.setTextAsync( getString(it.description))
             welcomeSlideIvFoto.setImageDrawable(ContextCompat.getDrawable(requireContext(), it.logo))
         }
     }

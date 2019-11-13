@@ -71,6 +71,10 @@ dependencies {
     def paging_version = '2.1.0'
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
 
+    // Work Manager
+    def work_version = "2.2.0"
+    implementation "androidx.work:work-runtime-ktx:$work_version"
+
     // License Activity
     implementation 'com.google.android.gms:play-services-oss-licenses:17.0.0'
 

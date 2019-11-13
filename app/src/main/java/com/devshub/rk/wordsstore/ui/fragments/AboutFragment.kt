@@ -32,7 +32,7 @@ class AboutFragment : BaseFragment() {
             context?.let {
                 val preferenceHelper = PreferenceHelper.getInstance(it)
                 val currentTheme = preferenceHelper
-                    .getStringPref(PREF_THEME, ThemeHelper.LIGHT_MODE)
+                    .getStringPref(PREF_THEME, ThemeHelper.DEFAULT_MODE)
 
                 val selectedPosition = when (currentTheme) {
                     ThemeHelper.LIGHT_MODE -> 0

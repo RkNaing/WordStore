@@ -30,7 +30,7 @@ class SaveWordDialogFragment : DialogFragment() {
         }
 
         fun show(supportFragmentManager: FragmentManager, word: WordWithCategory? = null) {
-            val saveWordDialog = SaveWordDialogFragment.createInstance(word)
+            val saveWordDialog = createInstance(word)
             saveWordDialog.show(supportFragmentManager, saveWordDialog::class.java.simpleName)
         }
     }
@@ -41,7 +41,7 @@ class SaveWordDialogFragment : DialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setStyle(DialogFragment.STYLE_NO_TITLE, theme)
+        setStyle(STYLE_NO_TITLE, theme)
         isCancelable = false
         val wordWithCategory: WordWithCategory? = arguments?.getParcelable(ARG_WORD)
         wordWithCategory?.let {

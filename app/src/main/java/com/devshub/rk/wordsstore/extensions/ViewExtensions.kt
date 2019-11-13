@@ -5,6 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
+import androidx.appcompat.widget.AppCompatTextView
+import androidx.core.text.PrecomputedTextCompat
+import androidx.core.widget.TextViewCompat
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
@@ -16,7 +19,6 @@ import com.google.android.material.textfield.TextInputLayout
 fun ViewGroup.addSubView(@LayoutRes from: Int, attachToRoot: Boolean = false): View {
     return LayoutInflater.from(context).inflate(from, this, attachToRoot)
 }
-
 
 val TextInputEditText.trimmedText: String
     get() = this.text?.toString()?.trim() ?: ""
@@ -35,6 +37,12 @@ fun View.gone() {
     this.visibility = View.GONE
 }
 
-fun View.visible(){
+fun View.visible() {
     this.visibility = View.VISIBLE
+}
+
+fun AppCompatTextView.setTextAsync(text: CharSequence?) {
+    val textMetricsParams = TextViewCompat.getTextMetricsParams(this)
+    val futureParam = PrecomputedTextCompat.getTextFuture(text ?: "", textMetricsParams, null)
+    setTextFuture(futureParam)
 }

@@ -14,4 +14,5 @@
     <color name="colorBottomNavSelected">@color/colorAccent</color>
     <color name="colorBottomNavUnSelected">#99FFFFFF</color>
     <color name="colorControlContent">@color/colorAccent</color>
+    <color name="colorNotificationTint">@color/colorAccent</color>
 </resources>

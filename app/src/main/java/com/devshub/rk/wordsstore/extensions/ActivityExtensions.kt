@@ -33,7 +33,7 @@ fun Activity.showDeleteConfirmDialog(message: Spanned, onDeleteCallback: () -> U
         .create()
     dialog.setOnShowListener {
         with(dialog.getButton(AlertDialog.BUTTON_POSITIVE)){
-            setTextColor(ContextCompat.getColor(dialog.context,android.R.color.holo_red_light))
+            setTextColor(ContextCompat.getColor(this@showDeleteConfirmDialog,android.R.color.holo_red_light))
             isAllCaps = false
         }
         with(dialog.getButton(AlertDialog.BUTTON_NEGATIVE)){

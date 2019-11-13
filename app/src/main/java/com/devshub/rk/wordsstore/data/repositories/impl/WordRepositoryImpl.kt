@@ -1,6 +1,7 @@
 package com.devshub.rk.wordsstore.data.repositories.impl
 
 import android.content.Context
+import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
@@ -23,16 +24,27 @@ class WordRepositoryImpl : WordRepository {
     }
 
     override fun updateWord(context: Context, word: Word, completion: CompletionCallback) {
-        operateInIO(context, { numOfRowsAffected -> completion(numOfRowsAffected > 0) }, { updateWord(word) })
+        operateInIO(
+            context,
+            { numOfRowsAffected -> completion(numOfRowsAffected > 0) },
+            { updateWord(word) })
     }
 
     override fun deleteWord(context: Context, word: Word, completion: CompletionCallback) {
-        operateInIO(context, { numOfRowsAffected -> completion(numOfRowsAffected > 0) }, { deleteWord(word) })
+        operateInIO(
+            context,
+            { numOfRowsAffected -> completion(numOfRowsAffected > 0) },
+            { deleteWord(word) })
     }
 
     override fun getWordsCount(context: Context, completion: (Int) -> Unit) {
         operateInIO(context, completion, { wordsCount() })
     }
+
+    @WorkerThread
+    override fun getWordsCount(context: Context) =
+        AppDB.getInstance(context).getWordDao().wordsCount()
+
 
     override fun getAllWordsWithCategoryTitlePagedList(context: Context): LiveData<PagedList<WordWithCategory>> {
         val pagedListConfig = PagedList.Config.Builder()
@@ -69,6 +81,10 @@ class WordRepositoryImpl : WordRepository {
     ) {
         operateInIO(context, wordWithCategoryCallback, { getSingleRandomWordWithCategoryTitle() })
     }
+
+    @WorkerThread
+    override fun getSingleRandomWordWithCategoryTitle(context: Context): WordWithCategory =
+        AppDB.getInstance(context).getWordDao().getSingleRandomWordWithCategoryTitle()
 
     override fun getWordWithCategoryById(context: Context, id: Long): LiveData<WordWithCategory?> {
         return AppDB.getInstance(context).getWordDao().getById(id)

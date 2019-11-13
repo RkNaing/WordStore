@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.devshub.rk.wordsstore.R
 import com.devshub.rk.wordsstore.extensions.gone
+import com.devshub.rk.wordsstore.extensions.setTextAsync
 import com.devshub.rk.wordsstore.extensions.visible
 import com.devshub.rk.wordsstore.ui.adapter.WordsRVAdapter
 import com.devshub.rk.wordsstore.ui.viewmodels.MainViewModel
@@ -25,7 +26,9 @@ class WordsListFragment : BaseFragment() {
         private const val ALL_WORDS = "Words"
     }
 
-    private val mainViewModel by lazy { ViewModelProviders.of(requireActivity()).get(MainViewModel::class.java) }
+    private val mainViewModel by lazy {
+        ViewModelProviders.of(requireActivity()).get(MainViewModel::class.java)
+    }
 
     private var currentCategory = ALL_WORDS
 
@@ -40,7 +43,12 @@ class WordsListFragment : BaseFragment() {
 
     override fun onViewReady(view: View, savedInstanceState: Bundle?) {
 
-        wordsFragmentSwipeRefreshLayout.setColorSchemeColors(ContextCompat.getColor(requireContext(),R.color.colorPrimary))
+        wordsFragmentSwipeRefreshLayout.setColorSchemeColors(
+            ContextCompat.getColor(
+                requireContext(),
+                R.color.colorPrimary
+            )
+        )
         wordsFragmentSwipeRefreshLayout.setOnRefreshListener {
             wordsFragmentSwipeRefreshLayout.isRefreshing = false
             currentCategory = ALL_WORDS
@@ -75,17 +83,19 @@ class WordsListFragment : BaseFragment() {
                         wordsFragmentRvWords.visible()
                         shouldShowFilter = true
                     } else {
-                        wordsFragmentTvEmptyMessage.text =
-                                if (currentCategory == ALL_WORDS) {
-                                    shouldShowFilter = false
-                                    getString(R.string.msg_empty_words)
-                                } else {
-                                    shouldShowFilter = true
-                                    getString(
-                                        R.string.msg_empty_words_by_category,
-                                        currentCategory
-                                    )
-                                }
+                        wordsFragmentTvEmptyMessage.setTextAsync(
+                            if (currentCategory == ALL_WORDS) {
+                                shouldShowFilter = false
+                                getString(R.string.msg_empty_words)
+                            } else {
+                                shouldShowFilter = true
+                                getString(
+                                    R.string.msg_empty_words_by_category,
+                                    currentCategory
+                                )
+                            }
+                        )
+
                         wordsFragmentEmptyViewContainer.visible()
                         wordsFragmentTvCount.gone()
                         wordsFragmentRvWords.gone()

@@ -42,7 +42,7 @@ class SaveCategoryDialogFragment : DialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setStyle(DialogFragment.STYLE_NO_TITLE, theme)
+        setStyle(STYLE_NO_TITLE, theme)
         isCancelable = false
         category = arguments?.getParcelable(ARG_CATEGORY)
     }

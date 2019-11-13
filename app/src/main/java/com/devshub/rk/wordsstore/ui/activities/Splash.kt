@@ -6,11 +6,17 @@ import android.os.Handler
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.PeriodicWorkRequest
+import androidx.work.WorkManager
 import com.devshub.rk.wordsstore.R
 import com.devshub.rk.wordsstore.data.db.AppDB
 import com.devshub.rk.wordsstore.extensions.observeOnce
 import com.devshub.rk.wordsstore.utils.PREF_IS_INITIAL_LAUNCH
 import com.devshub.rk.wordsstore.utils.PreferenceHelper
+import com.devshub.rk.wordsstore.utils.WORD_OF_THE_DAY_WORK_ID
+import com.devshub.rk.wordsstore.work.WordOfTheDayWorker
+import java.util.concurrent.TimeUnit
 
 /**
  * Created by ZMN on 12/26/18.
@@ -37,7 +43,19 @@ class Splash : AppCompatActivity() {
 
     private fun init() {
         Handler().postDelayed({
-            val isInitialLaunch = PreferenceHelper.getInstance(this).getBooleanPref(PREF_IS_INITIAL_LAUNCH, true)
+
+            // Setup WorkManager
+            val wordOfTheDayWork =
+                PeriodicWorkRequest.Builder(WordOfTheDayWorker::class.java, 15, TimeUnit.MINUTES)
+                    .build()
+            WorkManager.getInstance(this).enqueueUniquePeriodicWork(
+                WORD_OF_THE_DAY_WORK_ID,
+                ExistingPeriodicWorkPolicy.KEEP,
+                wordOfTheDayWork
+            )
+
+            val isInitialLaunch =
+                PreferenceHelper.getInstance(this).getBooleanPref(PREF_IS_INITIAL_LAUNCH, true)
             val intent = if (isInitialLaunch) {
                 PreferenceHelper.getInstance(this).setBooleanPref(PREF_IS_INITIAL_LAUNCH, false)
                 WelcomeActivity.getWelcomeIntent(this)

@@ -17,4 +17,5 @@
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">
         @color/colorTextSecondary
     </color>
+    <color name="colorNotificationTint">@color/colorPrimary</color>
 </resources>

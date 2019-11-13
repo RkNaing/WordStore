@@ -87,4 +87,7 @@
         eveniet expedita hic id iste molestias mollitia nam necessitatibus nesciunt numquam officiis perferendis
         quisquam repellendus, rerum voluptas.
     </string>
+
+    <!-- General -->
+    <string name="devshub_website">http://devshub-co.hostingerapp.com/</string>
 </resources>
