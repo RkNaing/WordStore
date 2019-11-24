@@ -28,6 +28,10 @@ android {
             resValue("string", "PORT_NUMBER", "8081")
         }
     }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
 }
 
 dependencies {
@@ -80,6 +84,9 @@ dependencies {
 
     // Timber Logger
     implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    // Material DateTime Picker
+    implementation 'com.wdullaer:materialdatetimepicker:4.2.3'
 
     // Debug DB
     debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'

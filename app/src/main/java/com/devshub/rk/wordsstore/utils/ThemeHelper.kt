@@ -9,6 +9,8 @@ object ThemeHelper {
     const val DARK_MODE = "dark"
     const val DEFAULT_MODE = "default"
 
+    var isDarkTheme = false
+
     fun applyTheme(theme: String) {
         val mode = when (theme) {
             LIGHT_MODE -> AppCompatDelegate.MODE_NIGHT_NO
@@ -22,6 +24,9 @@ object ThemeHelper {
             }
         }
         AppCompatDelegate.setDefaultNightMode(mode)
+        isDarkTheme = theme == DARK_MODE
     }
+
+
 
 }

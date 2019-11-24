@@ -43,4 +43,14 @@
         <item name="android:textColor">@color/colorTextPrimary</item>
     </style>
 
+    <style name="mdtp_ActionButton.Text" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:fontFamily">@font/arimo</item>
+    </style>
+
+    <style name="mddp_ActionButton.Text" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:fontFamily">@font/arimo</item>
+    </style>
+
 </resources>

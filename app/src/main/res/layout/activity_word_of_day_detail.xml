@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/wordOfTheDayRoot"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:fitsSystemWindows="true">
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/wordOfTheDayGuidelineH20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.2" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/img_wave_header"
+            app:layout_constraintBottom_toTopOf="@id/wordOfTheDayGuidelineH20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+            android:id="@+id/wordOfTheDayContentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/bg_primary_accent_stroke_rectangle"
+            android:orientation="vertical"
+            android:padding="8dp"
+            app:layout_constraintBottom_toTopOf="@id/wordOfTheDayBtnDismiss"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/wordOfTheDayIconContainer">
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/wordOfTheDayTvTitle"
+                style="@style/AppTextTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="45dp"
+                android:gravity="center"
+                tools:text="Word Title" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/wordOfTheDayTvDescription"
+                style="@style/AppTextContent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_weight="1"
+                android:scrollbars="vertical"
+                tools:text="@tools:sample/lorem/random" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/wordOfTheDayTvCategoryTitle"
+                style="@style/AppTextTag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:gravity="end"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/itemWordTvDesc"
+                tools:text="Sample Category Title" />
+
+    </LinearLayout>
+
+    <FrameLayout
+            android:id="@+id/wordOfTheDayIconContainer"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/bg_primary_accent_stroke_circular"
+            android:padding="8dp"
+            android:translationY="40dp"
+            app:layout_constraintBottom_toTopOf="@+id/wordOfTheDayContentContainer"
+            app:layout_constraintEnd_toEndOf="@+id/wordOfTheDayContentContainer"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/wordOfTheDayContentContainer"
+            app:layout_constraintTop_toBottomOf="@id/wordOfTheDayGuidelineH20">
+
+        <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_word_of_the_day"
+                android:tint="@color/colorAccent" />
+
+    </FrameLayout>
+
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/wordOfTheDayBtnDismiss"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/btn_dismiss"
+            app:cornerRadius="30dp"
+            app:layout_constraintBottom_toTopOf="@+id/wordOfTheDayGuidelineH90"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/wordOfTheDayContentContainer" />
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/wordOfTheDayGuidelineH90"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.90" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/img_wave_footer"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wordOfTheDayGuidelineH90" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

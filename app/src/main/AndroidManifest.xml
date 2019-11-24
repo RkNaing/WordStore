@@ -38,6 +38,11 @@
                 android:theme="@style/FullScreenActivity" />
 
         <activity
+                android:name=".ui.activities.WordOfTheDayDetailActivity"
+                android:screenOrientation="portrait"
+                android:theme="@style/TransparentActivity" />
+
+        <activity
                 android:name="com.google.android.gms.oss.licenses.OssLicensesMenuActivity"
                 android:theme="@style/AppTheme" />
         <activity
@@ -53,6 +58,13 @@
                     android:name="android.appwidget.provider"
                     android:resource="@xml/word_widget_info" />
         </receiver>
+
+        <!-- WorkManager Initializer (For on-demand initialization) -->
+        <provider
+                android:name="androidx.work.impl.WorkManagerInitializer"
+                android:authorities="${applicationId}.workmanager-init"
+                android:exported="false"
+                tools:node="remove" />
 
     </application>
 

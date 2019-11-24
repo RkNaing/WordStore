@@ -1,12 +1,7 @@
 package com.devshub.rk.wordsstore.ui.fragments
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import com.devshub.rk.wordsstore.R
 import com.devshub.rk.wordsstore.data.model.Category
@@ -18,7 +13,7 @@ import kotlinx.android.synthetic.main.fragment_dialog_save_category.*
 /**
  * Created by ZMN on 12/11/18.
  **/
-class SaveCategoryDialogFragment : DialogFragment() {
+class SaveCategoryDialogFragment : BaseDialogFragment() {
 
     companion object {
         private const val ARG_CATEGORY = "ArgCategory"
@@ -32,7 +27,10 @@ class SaveCategoryDialogFragment : DialogFragment() {
 
         fun show(supportFragmentManager: FragmentManager, category: Category? = null) {
             val saveCategoryDialog = createInstance(category)
-            saveCategoryDialog.show(supportFragmentManager, saveCategoryDialog::class.java.simpleName)
+            saveCategoryDialog.show(
+                supportFragmentManager,
+                saveCategoryDialog::class.java.simpleName
+            )
         }
 
     }
@@ -40,32 +38,10 @@ class SaveCategoryDialogFragment : DialogFragment() {
     private var category: Category? = null
     private var isSaveInProgress = false
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setStyle(STYLE_NO_TITLE, theme)
-        isCancelable = false
+    override fun getLayoutResource(): Int = R.layout.fragment_dialog_save_category
+
+    override fun onViewReady(view: View, savedInstanceState: Bundle?) {
         category = arguments?.getParcelable(ARG_CATEGORY)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        dialog?.window?.setLayout(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.MATCH_PARENT
-        )
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        return inflater.inflate(R.layout.fragment_dialog_save_category, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
         category?.let {
             saveCategoryDialogTvTitle.text = getString(R.string.lbl_title_update_category)
@@ -83,10 +59,16 @@ class SaveCategoryDialogFragment : DialogFragment() {
             category?.let { unwrappedCategory ->
                 activity?.dismissSoftKeyboard()
                 val deleteConfirmMessage =
-                    getString(R.string.msg_confirm_delete_category, unwrappedCategory.title).getHtml()
+                    getString(
+                        R.string.msg_confirm_delete_category,
+                        unwrappedCategory.title
+                    ).getHtml()
                 activity?.let { unwrappedActivity ->
                     unwrappedActivity.showDeleteConfirmDialog(deleteConfirmMessage) {
-                        categoryRepository.deleteCategory(unwrappedActivity, unwrappedCategory) { isSuccess ->
+                        categoryRepository.deleteCategory(
+                            unwrappedActivity,
+                            unwrappedCategory
+                        ) { isSuccess ->
                             if (isSuccess) {
                                 unwrappedActivity.successToast(R.string.msg_info_delete_success)
                                 dismiss()
@@ -98,7 +80,6 @@ class SaveCategoryDialogFragment : DialogFragment() {
                 }
             }
         }
-
 
         saveCategoryDialogBtnSave.setOnClickListener {
 
@@ -144,5 +125,6 @@ class SaveCategoryDialogFragment : DialogFragment() {
 
             }
         }
+
     }
 }

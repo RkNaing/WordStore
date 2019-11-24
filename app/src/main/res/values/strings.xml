@@ -59,6 +59,7 @@
     <string name="about_lbl_feedback">Feedback</string>
     <string name="about_lbl_visit_devs_hub">Visit DevsHub</string>
     <string name="about_lbl_themes">Themes</string>
+    <string name="about_lbl_word_of_day_noti_time">Word of the day Notification Time</string>
     <string name="about_lbl_app_intro">App Intro</string>
     <string name="about_lbl_assets_license">Assets License</string>
     <string name="about_dialog_title_assets_license">App assets license</string>
@@ -66,6 +67,7 @@
     <string name="about_lbl_feedback_subject">Words Store Android App Feedback</string>
     <string name="about_feedback_chooser_title">Send Words Store Feedback</string>
     <string name="about_dialog_title_select_theme">Select Theme</string>
+    <string name="about_msg_wod_noti_set">Word of the day notification time has been successfully set to everyday at %s.</string>
 
     <!-- Messages-->
     <string name="msg_info_save_success">Successfully Saved</string>
@@ -90,4 +92,5 @@
 
     <!-- General -->
     <string name="devshub_website">http://devshub-co.hostingerapp.com/</string>
+    <string name="btn_dismiss">Dismiss</string>
 </resources>
