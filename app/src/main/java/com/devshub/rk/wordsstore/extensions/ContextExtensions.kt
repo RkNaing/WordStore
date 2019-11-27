@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.devshub.rk.wordsstore.extensions
 
 import android.content.Context

@@ -8,6 +8,8 @@ apply plugin: 'kotlin-kapt'
 
 apply plugin: 'com.google.android.gms.oss-licenses-plugin'
 
+apply plugin: 'io.fabric'
+
 android {
     compileSdkVersion 29
     defaultConfig {
@@ -66,7 +68,7 @@ dependencies {
     kapt "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
 
     // Room Persistent
-    def room_version = '2.2.1'
+    def room_version = '2.2.2'
     implementation "androidx.room:room-runtime:$room_version"
     implementation "androidx.room:room-ktx:$room_version" // Kotlin Extensions and Coroutines support for Room
     kapt "androidx.room:room-compiler:$room_version"
@@ -79,6 +81,14 @@ dependencies {
     def work_version = "2.2.0"
     implementation "androidx.work:work-runtime-ktx:$work_version"
 
+    // Firebase
+
+    // Analytics
+    implementation 'com.google.firebase:firebase-analytics:17.2.1'
+
+    // Crashlytics
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.10.1'
+
     // License Activity
     implementation 'com.google.android.gms:play-services-oss-licenses:17.0.0'
 
@@ -87,6 +97,9 @@ dependencies {
 
     // Material DateTime Picker
     implementation 'com.wdullaer:materialdatetimepicker:4.2.3'
+
+    // AutoStart Permission Manager For OEM ROMs
+    implementation 'com.github.judemanutd:autostarter:1.0.5'
 
     // Debug DB
     debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
@@ -99,3 +112,5 @@ dependencies {
 androidExtensions {
     experimental = true
 }
+
+apply plugin: 'com.google.gms.google-services'

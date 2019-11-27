@@ -17,6 +17,8 @@ import com.devshub.rk.wordsstore.data.model.WordWithCategory
 import com.devshub.rk.wordsstore.data.repositories.wordRepository
 import com.devshub.rk.wordsstore.ui.activities.WordOfTheDayDetailActivity
 import com.devshub.rk.wordsstore.utils.NOTIFICATION_CHANNEL_ID
+import com.devshub.rk.wordsstore.utils.PREF_LAST_NOTIFIED_TIME
+import com.devshub.rk.wordsstore.utils.PreferenceHelper
 import com.devshub.rk.wordsstore.utils.getRandomNumber
 
 /**
@@ -35,6 +37,8 @@ class WordOfTheDayWorker(context: Context, params: WorkerParameters) : Worker(co
             }
         }
 
+        PreferenceHelper.getInstance(appContext)
+            .setLongPref(PREF_LAST_NOTIFIED_TIME, System.currentTimeMillis())
 
         return Result.success()
 
@@ -84,6 +88,5 @@ class WordOfTheDayWorker(context: Context, params: WorkerParameters) : Worker(co
         }
 
         notificationManager.notify(getRandomNumber(4), notificationBuilder.build())
-
     }
 }

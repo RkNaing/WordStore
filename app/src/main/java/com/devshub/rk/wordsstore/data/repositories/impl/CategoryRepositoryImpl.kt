@@ -32,7 +32,7 @@ class CategoryRepositoryImpl : CategoryRepository {
 
     override fun createCategories(context: Context, categories: List<Category>, completion: CompletionCallback) {
         operateInIO(context, {
-            completion(!it.isEmpty())
+            completion(it.isNotEmpty())
         }, { createCategories(categories) })
     }
 

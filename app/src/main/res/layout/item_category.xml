@@ -21,7 +21,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 style="@style/AppTextTitle"
-                app:layout_constraintBottom_toTopOf="@id/itemCateogryDescDividerView"
+                app:layout_constraintBottom_toTopOf="@id/itemCategoryDescDividerView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -29,7 +29,7 @@
                 tools:text="Category Title"/>
 
         <View
-                android:id="@+id/itemCateogryDescDividerView"
+                android:id="@+id/itemCategoryDescDividerView"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginBottom="4dp"
@@ -52,7 +52,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/itemCateogryDescDividerView"
+                app:layout_constraintTop_toBottomOf="@id/itemCategoryDescDividerView"
                 tools:text="@string/textWordDesc"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

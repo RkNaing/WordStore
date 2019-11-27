@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.devshub.rk.wordsstore.utils
 
 import android.content.res.Resources

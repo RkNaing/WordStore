@@ -2,6 +2,7 @@ package com.devshub.rk.wordsstore.ui.activities
 
 import android.os.Bundle
 import android.os.Handler
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commitNow
@@ -12,6 +13,9 @@ import com.devshub.rk.wordsstore.extensions.infoToast
 import com.devshub.rk.wordsstore.ui.fragments.*
 import com.devshub.rk.wordsstore.ui.viewmodels.MainViewModel
 import com.devshub.rk.wordsstore.ui.widgets.WordWidget
+import com.devshub.rk.wordsstore.utils.PREF_LAST_NOTIFIED_TIME
+import com.devshub.rk.wordsstore.utils.PreferenceHelper
+import com.judemanutd.autostarter.AutoStartPermissionHelper
 import kotlinx.android.synthetic.main.activity_main.*
 import timber.log.Timber
 
@@ -121,6 +125,7 @@ class MainActivity : AppCompatActivity() {
 
         mainBottomNavigationView.selectedItemId = mainViewModel.currentTabMenuId
 
+        manageAutoStart()
 
     }
 
@@ -171,6 +176,44 @@ class MainActivity : AppCompatActivity() {
             hide(currentFragment)
             show(destination)
             currentFragment = destination
+        }
+    }
+
+    private fun manageAutoStart() {
+        val autoStartPermissionHelper = AutoStartPermissionHelper.getInstance()
+        if (autoStartPermissionHelper.isAutoStartPermissionAvailable(applicationContext)
+        ) {
+            Timber.i("AutoStartPermission is available")
+
+            val currentTimeMillis = System.currentTimeMillis()
+            val preferenceHelper = PreferenceHelper.getInstance(applicationContext)
+            val lastNotifiedTime = preferenceHelper
+                .getLongPref(PREF_LAST_NOTIFIED_TIME, currentTimeMillis)
+
+            val timestampDiff = currentTimeMillis - lastNotifiedTime
+            val diffInHours = if (timestampDiff > 0L) {
+                timestampDiff / (1000 * 60 * 60)
+            } else {
+                preferenceHelper.setLongPref(PREF_LAST_NOTIFIED_TIME,currentTimeMillis)
+                -1
+            }
+
+            if (diffInHours < 0 || diffInHours >= 24) {
+
+                AlertDialog.Builder(this@MainActivity)
+                    .setTitle(R.string.dialog_title_auto_start)
+                    .setMessage(R.string.dialog_msg_auto_start)
+                    .setCancelable(false)
+                    .setPositiveButton(android.R.string.ok) { dialog, _ ->
+                        val requestStatus =
+                            autoStartPermissionHelper.getAutoStartPermission(applicationContext)
+                        Timber.i("Is AutoStartPermission request success? : $requestStatus")
+                        dialog.dismiss()
+                    }
+                    .show()
+
+            }
+
         }
     }
 

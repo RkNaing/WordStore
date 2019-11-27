@@ -93,4 +93,6 @@
     <!-- General -->
     <string name="devshub_website">http://devshub-co.hostingerapp.com/</string>
     <string name="btn_dismiss">Dismiss</string>
+    <string name="dialog_title_auto_start">Auto Start Permission</string>
+    <string name="dialog_msg_auto_start">Please allow Auto Start for WordStore so you will be notified about Word of The Day on time to keep revising your learned vocabularies.\nWordStore is assured to be battery efficient and won\'t be a load on your battery and CPU.</string>
 </resources>
