@@ -1,3 +1,23 @@
+/*
+ * Copyright (C) 2019 WordsStore
+ *
+ * Created by		:	Rahul Kumar
+ * Last Modified	:	28 Nov 2019 03:06:11 PM
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *        
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+
 package com.devshub.rk.wordsstore.ui.widgets
 
 import android.app.PendingIntent
@@ -22,7 +42,11 @@ import com.devshub.rk.wordsstore.utils.PreferenceHelper
  */
 class WordWidget : AppWidgetProvider() {
 
-    override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
+    override fun onUpdate(
+        context: Context,
+        appWidgetManager: AppWidgetManager,
+        appWidgetIds: IntArray
+    ) {
         // There may be multiple widgets active, so update all of them
         for (appWidgetId in appWidgetIds) {
             updateAppWidget(
@@ -64,7 +88,8 @@ class WordWidget : AppWidgetProvider() {
             if (intent.action == ACTION_RELOAD_WIDGET || intent.action == ACTION_APPWIDGET_UPDATE) {
                 loadAndInflateWidgetData(context, updateOperation)
             } else if (intent.action == ACTION_REFRESH_WIDGET) {
-                val wordWithCategory: WordWithCategory? = intent.getParcelableExtra(ARG_WORD_WITH_CATEGORY)
+                val wordWithCategory: WordWithCategory? =
+                    intent.getParcelableExtra(ARG_WORD_WITH_CATEGORY)
                 if (wordWithCategory != null) {
                     val views = inflateWidgetData(context, wordWithCategory)
                     appWidgetManager.updateAppWidget(wordWidget, views)
@@ -123,14 +148,20 @@ class WordWidget : AppWidgetProvider() {
             }
         }
 
-        private fun inflateWidgetData(context: Context, wordWithCategory: WordWithCategory): RemoteViews {
+        private fun inflateWidgetData(
+            context: Context,
+            wordWithCategory: WordWithCategory
+        ): RemoteViews {
             // Construct the RemoteViews object
             val views = RemoteViews(context.packageName, R.layout.word_widget)
             views.setViewVisibility(R.id.widgetWordEmptyViewContainer, View.GONE)
             views.setViewVisibility(R.id.widgetWordContentContainer, View.VISIBLE)
             views.setTextViewText(R.id.widgetWordTvTitle, wordWithCategory.word.title)
             views.setTextViewText(R.id.widgetWordTvDesc, wordWithCategory.word.description)
-            views.setTextViewText(R.id.widgetWordCategoryTitleTv, wordWithCategory.wordCategory.title)
+            views.setTextViewText(
+                R.id.widgetWordCategoryTitleTv,
+                wordWithCategory.wordCategory.title
+            )
 
             val intent = Intent(context, WordWidget::class.java)
             intent.action = ACTION_RELOAD_WIDGET
@@ -142,9 +173,13 @@ class WordWidget : AppWidgetProvider() {
             )
 
             views.setOnClickPendingIntent(R.id.widgetWordIvRefresh, pendingIntent)
-            views.setOnClickPendingIntent(R.id.widgetWordIvAdd, getMainActivityPendingIntent(context))
+            views.setOnClickPendingIntent(
+                R.id.widgetWordIvAdd,
+                getMainActivityPendingIntent(context)
+            )
 
-            PreferenceHelper.getInstance(context).setLongPref(PREF_WIDGET_WORD_ID, wordWithCategory.word.id)
+            PreferenceHelper.getInstance(context)
+                .setLongPref(PREF_WIDGET_WORD_ID, wordWithCategory.word.id)
 
             return views
         }
@@ -154,7 +189,10 @@ class WordWidget : AppWidgetProvider() {
             val views = RemoteViews(context.packageName, R.layout.word_widget)
             views.setViewVisibility(R.id.widgetWordEmptyViewContainer, View.VISIBLE)
             views.setViewVisibility(R.id.widgetWordContentContainer, View.GONE)
-            views.setOnClickPendingIntent(R.id.widgetWordEmptyViewContainer, getMainActivityPendingIntent(context))
+            views.setOnClickPendingIntent(
+                R.id.widgetWordEmptyViewContainer,
+                getMainActivityPendingIntent(context)
+            )
             return views
         }
 

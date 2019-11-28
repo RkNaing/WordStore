@@ -1,3 +1,23 @@
+/*
+ * Copyright (C) 2019 WordsStore
+ *
+ * Created by		:	Rahul Kumar
+ * Last Modified	:	28 Nov 2019 03:06:11 PM
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+
 @file:Suppress("unused")
 
 package com.devshub.rk.wordsstore.utils
@@ -39,16 +59,25 @@ val Context.defaultPreferences: SharedPreferences
 
 class SharedPreferenceIntLiveData(sharedPrefs: SharedPreferences, key: String, defValue: Int) :
     SharedPreferenceLiveData<Int>(sharedPrefs, key, defValue) {
-    override fun getValueFromPreferences(key: String, defValue: Int): Int = sharedPrefs.getInt(key, defValue)
+    override fun getValueFromPreferences(key: String, defValue: Int): Int =
+        sharedPrefs.getInt(key, defValue)
 }
 
-class SharedPreferenceStringLiveData(sharedPrefs: SharedPreferences, key: String, defValue: String) :
+class SharedPreferenceStringLiveData(
+    sharedPrefs: SharedPreferences,
+    key: String,
+    defValue: String
+) :
     SharedPreferenceLiveData<String>(sharedPrefs, key, defValue) {
     override fun getValueFromPreferences(key: String, defValue: String): String =
         sharedPrefs.getString(key, defValue) ?: defValue
 }
 
-class SharedPreferenceBooleanLiveData(sharedPrefs: SharedPreferences, key: String, defValue: Boolean) :
+class SharedPreferenceBooleanLiveData(
+    sharedPrefs: SharedPreferences,
+    key: String,
+    defValue: Boolean
+) :
     SharedPreferenceLiveData<Boolean>(sharedPrefs, key, defValue) {
     override fun getValueFromPreferences(key: String, defValue: Boolean): Boolean =
         sharedPrefs.getBoolean(key, defValue)
@@ -56,15 +85,21 @@ class SharedPreferenceBooleanLiveData(sharedPrefs: SharedPreferences, key: Strin
 
 class SharedPreferenceFloatLiveData(sharedPrefs: SharedPreferences, key: String, defValue: Float) :
     SharedPreferenceLiveData<Float>(sharedPrefs, key, defValue) {
-    override fun getValueFromPreferences(key: String, defValue: Float): Float = sharedPrefs.getFloat(key, defValue)
+    override fun getValueFromPreferences(key: String, defValue: Float): Float =
+        sharedPrefs.getFloat(key, defValue)
 }
 
 class SharedPreferenceLongLiveData(sharedPrefs: SharedPreferences, key: String, defValue: Long) :
     SharedPreferenceLiveData<Long>(sharedPrefs, key, defValue) {
-    override fun getValueFromPreferences(key: String, defValue: Long): Long = sharedPrefs.getLong(key, defValue)
+    override fun getValueFromPreferences(key: String, defValue: Long): Long =
+        sharedPrefs.getLong(key, defValue)
 }
 
-class SharedPreferenceStringSetLiveData(sharedPrefs: SharedPreferences, key: String, defValue: Set<String>) :
+class SharedPreferenceStringSetLiveData(
+    sharedPrefs: SharedPreferences,
+    key: String,
+    defValue: Set<String>
+) :
     SharedPreferenceLiveData<Set<String>>(sharedPrefs, key, defValue) {
     override fun getValueFromPreferences(key: String, defValue: Set<String>): Set<String> =
         sharedPrefs.getStringSet(key, defValue) ?: defValue
@@ -78,7 +113,10 @@ fun Context.intLiveData(key: String, defValue: Int): SharedPreferenceLiveData<In
     return SharedPreferenceIntLiveData(defaultPreferences, key, defValue)
 }
 
-fun SharedPreferences.stringLiveData(key: String, defValue: String): SharedPreferenceLiveData<String> {
+fun SharedPreferences.stringLiveData(
+    key: String,
+    defValue: String
+): SharedPreferenceLiveData<String> {
     return SharedPreferenceStringLiveData(this, key, defValue)
 }
 
@@ -86,7 +124,10 @@ fun Context.stringLiveData(key: String, defValue: String): SharedPreferenceLiveD
     return SharedPreferenceStringLiveData(defaultPreferences, key, defValue)
 }
 
-fun SharedPreferences.booleanLiveData(key: String, defValue: Boolean): SharedPreferenceLiveData<Boolean> {
+fun SharedPreferences.booleanLiveData(
+    key: String,
+    defValue: Boolean
+): SharedPreferenceLiveData<Boolean> {
     return SharedPreferenceBooleanLiveData(this, key, defValue)
 }
 
@@ -110,10 +151,16 @@ fun Context.longLiveData(key: String, defValue: Long): SharedPreferenceLiveData<
     return SharedPreferenceLongLiveData(defaultPreferences, key, defValue)
 }
 
-fun SharedPreferences.stringSetLiveData(key: String, defValue: Set<String>): SharedPreferenceLiveData<Set<String>> {
+fun SharedPreferences.stringSetLiveData(
+    key: String,
+    defValue: Set<String>
+): SharedPreferenceLiveData<Set<String>> {
     return SharedPreferenceStringSetLiveData(this, key, defValue)
 }
 
-fun Context.stringSetLiveData(key: String, defValue: Set<String>): SharedPreferenceLiveData<Set<String>> {
+fun Context.stringSetLiveData(
+    key: String,
+    defValue: Set<String>
+): SharedPreferenceLiveData<Set<String>> {
     return SharedPreferenceStringSetLiveData(defaultPreferences, key, defValue)
 }

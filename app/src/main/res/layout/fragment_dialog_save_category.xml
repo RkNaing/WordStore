@@ -1,11 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2019 WordsStore
+  ~
+  ~ Created by		:	Rahul Kumar
+  ~ Last Modified	:	28 Nov 2019 03:06:11 PM
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~        http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="none"
-            android:background="@android:color/transparent">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:background="@android:color/transparent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -27,7 +46,7 @@
                 style="@style/AppTextTitle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
         <View
                 android:id="@+id/saveCategoryDialogTitleDivider"
@@ -37,7 +56,7 @@
                 android:background="@color/colorDivider"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/saveCategoryDialogTvTitle"/>
+                app:layout_constraintTop_toBottomOf="@+id/saveCategoryDialogTvTitle" />
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -62,7 +81,7 @@
                     android:fontFamily="@font/arimo"
                     android:textColor="@color/colorTextPrimary"
                     android:inputType="text"
-                    android:singleLine="true"/>
+                    android:singleLine="true" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -92,7 +111,7 @@
                     android:inputType="textMultiLine"
                     android:minLines="5"
                     android:maxLines="5"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -116,7 +135,7 @@
                 tools:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/saveCategoryDialogTilDesc"/>
+                app:layout_constraintTop_toBottomOf="@id/saveCategoryDialogTilDesc" />
 
         <com.google.android.material.button.MaterialButton
                 android:id="@+id/saveCategoryDialogBtnSave"
@@ -135,7 +154,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/saveCategoryDialogBtnCancel"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/saveCategoryDialogBtnCancel"
-                app:layout_constraintTop_toTopOf="@+id/saveCategoryDialogBtnCancel"/>
+                app:layout_constraintTop_toTopOf="@+id/saveCategoryDialogBtnCancel" />
 
         <com.google.android.material.button.MaterialButton
                 android:id="@+id/saveCategoryDialogBtnCancel"
@@ -157,7 +176,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/saveCategoryDialogBtnSave"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/saveCategoryDialogBtnDelete"/>
+                app:layout_constraintTop_toBottomOf="@+id/saveCategoryDialogBtnDelete" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
