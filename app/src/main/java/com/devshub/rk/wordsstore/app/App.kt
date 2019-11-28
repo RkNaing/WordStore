@@ -46,6 +46,7 @@ class App : Application(), Configuration.Provider {
         val selectedTheme =
             PreferenceHelper.getInstance(this).getStringPref(PREF_THEME, ThemeHelper.DARK_MODE)
         ThemeHelper.applyTheme(selectedTheme)
+        Timber.d("onCreate")
     }
 
     override fun getWorkManagerConfiguration(): Configuration {
