@@ -23,9 +23,19 @@ package com.devshub.rk.wordsstore.utils
 import com.devshub.rk.wordsstore.data.model.Category
 import com.devshub.rk.wordsstore.data.model.WordWithCategory
 
-
+/**
+ * Generic callback for operation with a boolean
+ * parameter indicating success or failure
+ */
 typealias CompletionCallback = (Boolean) -> Unit
 
+/**
+ * Callback for delegating click event on Category
+ * item in filter
+ */
 typealias CategoryItemClickCallback = (Category) -> Unit
 
+/**
+ * Callback for delegating WordWithCategory related events
+ */
 typealias WordWithCategoryCallback = (WordWithCategory) -> Unit
