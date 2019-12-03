@@ -36,10 +36,11 @@ android {
         applicationId "com.devshub.rk.wordsstore"
         minSdkVersion 17
         targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "2.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         resValue 'string', 'lbl_app_version', 'Version : ' + defaultConfig.versionName
+        resConfigs "en"
     }
     buildTypes {
         release {
