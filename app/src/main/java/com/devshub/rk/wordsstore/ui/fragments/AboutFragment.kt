@@ -165,7 +165,7 @@ class AboutFragment : BaseFragment() {
 
         about_visit_devs_hub.setOnClickListener {
             val browserIntent = Intent(Intent.ACTION_VIEW)
-            browserIntent.data = Uri.parse("https://www.devshub.co/")
+            browserIntent.data = Uri.parse(getString(R.string.devshub_website))
             startActivity(
                 Intent.createChooser(
                     browserIntent,
